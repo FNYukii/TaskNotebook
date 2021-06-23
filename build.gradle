@@ -4,6 +4,7 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
     dependencies {
         classpath "com.android.tools.build:gradle:4.2.1"
@@ -13,7 +14,7 @@ buildscript {
         // in the individual module build.gradle files
 
         //Realm
-//        classpath "io.realm:realm-gradle-plugin:6.0.2"
+        classpath "io.realm:realm-gradle-plugin:6.0.2"
     }
 }
 
@@ -21,6 +22,7 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        jcenter()
     }
 }
 

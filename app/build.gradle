@@ -3,7 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
-//    id 'realm-android'
+    id 'realm-android'
 }
 
 android {
