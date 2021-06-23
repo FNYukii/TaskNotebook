@@ -8,9 +8,10 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
-
+    <!-- light theme -->
     <color name="appBackground">#FFFFFF</color>
+    <color name="weak">#777777</color>
+    <color name="strong">#000000</color>
 
 
 </resources>
