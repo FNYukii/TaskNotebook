@@ -10,6 +10,7 @@
 
     <!-- light theme -->
     <color name="appBackground">#FFFFFF</color>
+    <color name="bottomNavigationBackground">#FFFFFF</color>
     <color name="weak">#777777</color>
     <color name="strong">#000000</color>
 

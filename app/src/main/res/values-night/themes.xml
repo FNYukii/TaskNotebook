@@ -21,7 +21,7 @@
         <item name="windowActionBar">false</item>
 
         <!-- Navigation Bar -->
-        <item name="android:navigationBarColor">@color/appBackground</item>
+        <item name="android:navigationBarColor">@color/bottomNavigationBackground</item>
 
         <!-- App background -->
         <item name="android:windowBackground">@color/appBackground</item>
