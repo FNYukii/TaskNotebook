@@ -29,14 +29,25 @@
             app:tint="@color/weak" />
 
         <ImageButton
-            android:id="@+id/deleteButton"
+            android:id="@+id/achieveButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             android:background="@drawable/background_tool_button"
-            android:src="@drawable/ic_baseline_delete_24"
+            android:src="@drawable/ic_baseline_check_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/pinButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/weak" />
+
+        <ImageButton
+            android:id="@+id/pinButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/background_tool_button"
+            android:src="@drawable/ic_outline_push_pin_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/colorButton"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/weak" />
 
         <ImageButton
@@ -51,26 +62,44 @@
             app:tint="@color/weak" />
 
         <ImageButton
-            android:id="@+id/pinButton"
+            android:id="@+id/deleteButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/colorButton"
             android:background="@drawable/background_tool_button"
-            android:src="@drawable/ic_outline_push_pin_24"
-            app:tint="@color/weak" />
-
-        <ImageButton
-            android:id="@+id/achieveButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/ic_baseline_delete_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/pinButton"
-            android:background="@drawable/background_tool_button"
-            android:src="@drawable/ic_baseline_check_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/weak" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/titleEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:background="@null"
+        android:hint="タイトル"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/detailEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:background="@null"
+        android:hint="説明"
+        app:layout_constraintTop_toBottomOf="@id/titleEdit"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
