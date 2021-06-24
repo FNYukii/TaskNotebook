@@ -22,12 +22,5 @@
     <color name="appBackground">#FFFFFF</color>
     <color name="bottomNavigationBackground">#FFFFFF</color>
 
-    <!-- task colors -->
-    <!-- color name default = appBackground -->
-    <color name="green">#C8FF88</color>
-    <color name="blue">#6DBEFF</color>
-    <color name="purple">#EC7AFF</color>
-    <color name="orange">#FF9674</color>
-
 
 </resources>
