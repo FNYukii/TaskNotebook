@@ -4,7 +4,7 @@
     <item
         android:id="@+id/navigation_first"
         android:icon="@drawable/ic_baseline_bookmark_24"
-        android:title="@string/title_fusen" />
+        android:title="@string/title_task" />
 
     <item
         android:id="@+id/navigation_second"

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FusenFragment">
+    tools:context=".TaskFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is fusen fragment"
-        android:textColor="@color/weak"
+        android:text="This is task fragment"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="@color/weak"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

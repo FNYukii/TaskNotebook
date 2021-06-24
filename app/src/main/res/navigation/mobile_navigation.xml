@@ -7,8 +7,8 @@
 
     <fragment
         android:id="@+id/navigation_first"
-        android:name="com.example.y.tasknotebook.FusenFragment"
-        tools:layout="@layout/fragment_fusen" />
+        android:name="com.example.y.tasknotebook.TaskFragment"
+        tools:layout="@layout/fragment_task" />
 
     <fragment
         android:id="@+id/navigation_second"

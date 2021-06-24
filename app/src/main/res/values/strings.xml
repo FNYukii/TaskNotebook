@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">FusenNote</string>
 
-    <string name="title_fusen">ふせん</string>
+    <string name="title_task">タスク</string>
     <string name="title_calendar">カレンダー</string>
     <string name="title_search">検索</string>
 </resources>
