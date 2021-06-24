@@ -17,8 +17,6 @@ class EditActivity : AppCompatActivity() {
     private var id = 0
     private var isAchieved = false
     private var isPinned = false
-    private var title = ""
-    private var detail = ""
     private var achievedYear = 0
     private var achievedMonth = 0
     private var achievedDate = 0
@@ -55,8 +53,8 @@ class EditActivity : AppCompatActivity() {
             val task = realm.createObject<Task>(newId)
             task.isAchieved = isAchieved
             task.isPinned = isPinned
-            task.title = title
-            task.detail = detail
+            task.title = titleEdit.text.toString()
+            task.detail = detailEdit.text.toString()
             task.achievedYear = achievedYear
             task.achievedMonth = achievedMonth
             task.achievedDate = achievedDate
