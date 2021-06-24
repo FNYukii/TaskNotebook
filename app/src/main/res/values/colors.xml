@@ -17,6 +17,7 @@
     <!-- LIGHT THEME -->
     <!-- primary -->
     <color name="strong">#000000</color>
+    <color name="weak">#777777</color>
 
     <!-- part colors -->
     <color name="appBackground">#FFFFFF</color>

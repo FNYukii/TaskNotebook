@@ -4,6 +4,7 @@
     <!-- DARK THEME -->
     <!-- primary -->
     <color name="strong">#FFFFFF</color>
+    <color name="weak">#AAAAAA</color>
 
     <!-- part colors -->
     <color name="appBackground">#333333</color>
