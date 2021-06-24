@@ -8,12 +8,15 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- light theme -->
     <!-- primary -->
     <color name="weak">#AAAAAA</color>
-    <color name="strong">#000000</color>
+    <color name="translucentWeak">#55AAAAAA</color>
     <color name="imageColor">#FF6464</color>
     <color name="lightImageColor">#FF9696</color>
+
+    <!-- LIGHT THEME -->
+    <!-- primary -->
+    <color name="strong">#000000</color>
 
     <!-- part colors -->
     <color name="appBackground">#FFFFFF</color>
