@@ -7,16 +7,16 @@
 
     <fragment
         android:id="@+id/navigation_first"
-        android:name="com.example.y.fusennote.FusenFragment"
+        android:name="com.example.y.tasknotebook.FusenFragment"
         tools:layout="@layout/fragment_fusen" />
 
     <fragment
         android:id="@+id/navigation_second"
-        android:name="com.example.y.fusennote.CalendarFragment"
+        android:name="com.example.y.tasknotebook.CalendarFragment"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/navigation_third"
-        android:name="com.example.y.fusennote.SearchFragment"
+        android:name="com.example.y.tasknotebook.SearchFragment"
         tools:layout="@layout/fragment_search" />
 </navigation>

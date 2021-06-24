@@ -12,7 +12,7 @@ android {
     compileSdkVersion 30
 
     defaultConfig {
-        applicationId "com.example.y.fusennote"
+        applicationId "com.example.y.tasknotebook"
         minSdkVersion 27
         targetSdkVersion 30
         versionCode 1

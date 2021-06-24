@@ -1,4 +1,4 @@
-package com.example.y.fusennote
+package com.example.y.tasknotebook
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
