@@ -8,6 +8,6 @@
     <item android:color="@color/imageColor" android:state_pressed="true"/>
 
     <!-- Default -->
-    <item android:color="@color/weak"/>
+    <item android:color="@color/gray"/>
 
 </selector>
