@@ -8,11 +8,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- dark theme -->
-    <color name="appBackground">#333333</color>
-    <color name="bottomNavigationBackground">#444444</color>
+    <!-- light theme -->
+    <!-- primary -->
     <color name="weak">#AAAAAA</color>
     <color name="strong">#FFFFFF</color>
+    <color name="imageColor">#FF6464</color>
+    <color name="lightImageColor">#FF9696</color>
+
+    <!-- part colors -->
+    <color name="appBackground">#333333</color>
+    <color name="bottomNavigationBackground">#444444</color>
+
+    <!-- task colors -->
 
 
 </resources>

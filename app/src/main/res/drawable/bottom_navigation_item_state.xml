@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- Checked -->
-    <item android:color="@color/strong" android:state_checked="true"/>
+    <item android:color="@color/imageColor" android:state_checked="true"/>
 
     <!-- Clicked -->
-    <item android:color="@color/strong" android:state_pressed="true"/>
+    <item android:color="@color/imageColor" android:state_pressed="true"/>
 
     <!-- Default -->
     <item android:color="@color/weak"/>

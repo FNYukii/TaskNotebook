@@ -9,10 +9,17 @@
     <color name="white">#FFFFFFFF</color>
 
     <!-- light theme -->
-    <color name="appBackground">#FFFFFF</color>
-    <color name="bottomNavigationBackground">#FFFFFF</color>
+    <!-- primary -->
     <color name="weak">#AAAAAA</color>
     <color name="strong">#000000</color>
+    <color name="imageColor">#FF6464</color>
+    <color name="lightImageColor">#FF9696</color>
+
+    <!-- part colors -->
+    <color name="appBackground">#FFFFFF</color>
+    <color name="bottomNavigationBackground">#FFFFFF</color>
+
+    <!-- task colors -->
 
 
 </resources>
