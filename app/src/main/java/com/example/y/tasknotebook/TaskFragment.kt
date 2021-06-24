@@ -39,10 +39,17 @@ class TaskFragment : Fragment() {
             startActivity(intent)
         }
 
+        //まだpinRecyclerView使わないので非表示
+        pinRecyclerView.visibility = View.GONE
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+
         //mainRecyclerViewを表示
         mainRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
         mainRecyclerView.adapter = FrameRecyclerViewAdapter(realmResults)
-
     }
 
 
