@@ -11,6 +11,7 @@ import io.realm.RealmResults
 import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_achieved_task.*
+import kotlinx.android.synthetic.main.fragment_task.*
 
 
 class AchievedTaskFragment : Fragment() {
@@ -40,6 +41,14 @@ class AchievedTaskFragment : Fragment() {
         //achievedRecyclerViewの処理
         achievedRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
         achievedRecyclerView.adapter = FrameRecyclerViewAdapter(achievedResults)
+
+        //達成済みのタスクが0件なら、画面にメッセージを表示
+        if(achievedResults.size == 0){
+            messageText02.visibility = View.VISIBLE
+        }else {
+            messageText02.visibility = View.GONE
+        }
+
     }
 
 

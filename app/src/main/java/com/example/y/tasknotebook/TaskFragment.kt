@@ -70,6 +70,14 @@ class TaskFragment : Fragment() {
         //mainRecyclerViewの処理
         mainRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
         mainRecyclerView.adapter = FrameRecyclerViewAdapter(notPinnedResults)
+
+        //タスクが0件なら、画面にメッセージを表示
+        if(pinnedResults.size == 0 && notPinnedResults.size == 0){
+            messageText01.visibility = View.VISIBLE
+        }else{
+            messageText01.visibility = View.GONE
+        }
+
     }
 
 
