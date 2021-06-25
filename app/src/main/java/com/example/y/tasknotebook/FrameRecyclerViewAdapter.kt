@@ -48,10 +48,9 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
         }
 
         //達成日時をTextViewへセット
-        val achievedDate: String = task?.achievedYear.toString() + "-" + task?.achievedMonth.toString() + "-" + task?.achievedDay.toString() + " " + task?.achievedHour.toString() + ":" + task?.achievedMinute.toString()
         if(task?.achievedDatetime != null){
             val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            val newAchievedDatetime: String = formatter.format(task?.achievedDatetime).toString()
+            val newAchievedDatetime: String = formatter.format(task.achievedDatetime).toString()
             holder.frameAchievedDateText.text = newAchievedDatetime
         }
 

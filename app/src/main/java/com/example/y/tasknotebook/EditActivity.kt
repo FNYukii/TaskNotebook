@@ -20,11 +20,6 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
     private var id = 0
     private var isAchieved = false
     private var isPinned = false
-    private var achievedYear = 0
-    private var achievedMonth = 0
-    private var achievedDay = 0
-    private var achievedHour = 0
-    private var achievedMinute = 0
     private var achievedDatetime: Date? = null
     private var isGarbage = false
 
@@ -45,11 +40,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             isPinned = task.isPinned
             titleEdit.setText(task.title)
             detailEdit.setText(task.detail)
-            achievedYear = task.achievedYear
-            achievedMonth = task.achievedMonth
-            achievedDay = task.achievedDay
-            achievedHour = task.achievedHour
-            achievedMinute = task.achievedMinute
+            achievedDatetime = task.achievedDatetime
             setPinIcon()
         }
 
@@ -133,11 +124,6 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task.isPinned = isPinned
             task.title = titleEdit.text.toString()
             task.detail = detailEdit.text.toString()
-            task.achievedYear = achievedYear
-            task.achievedMonth = achievedMonth
-            task.achievedDay = achievedDay
-            task.achievedHour = achievedHour
-            task.achievedMinute = achievedMinute
             task.achievedDatetime = achievedDatetime
         }
     }
@@ -155,11 +141,6 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task?.isPinned = isPinned
             task?.title = titleEdit.text.toString()
             task?.detail = detailEdit.text.toString()
-            task?.achievedYear = achievedYear
-            task?.achievedMonth = achievedMonth
-            task?.achievedDay = achievedDay
-            task?.achievedHour = achievedHour
-            task?.achievedMinute = achievedMinute
             task?.achievedDatetime = achievedDatetime
         }
     }
@@ -189,27 +170,10 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             isAchieved = true
             isPinned = false
             //現在日時を各フィールドに保存
-            val now = LocalDateTime.now()
-            achievedYear = now.year
-            achievedMonth = now.monthValue
-            achievedDay = now.dayOfMonth
-            achievedHour = now.hour
-            achievedMinute = now.minute
             achievedDatetime = Date()
-            Log.d("hello", "Year: $achievedYear")
-            Log.d("hello", "Month: $achievedMonth")
-            Log.d("hello", "Date: $achievedDay")
-            Log.d("hello", "Hour: $achievedHour")
-            Log.d("hello", "Minute: $achievedMinute")
-            Log.d("hello", "Datetime: $achievedDatetime")
         }else{
             //未達成にする
             isAchieved = false
-            achievedYear = -1
-            achievedMonth = -1
-            achievedDay = -1
-            achievedHour = -1
-            achievedMinute = -1
             achievedDatetime = null
         }
         saveRecord()
