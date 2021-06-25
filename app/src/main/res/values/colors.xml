@@ -20,7 +20,7 @@
 
     <!-- LIGHT THEME -->
     <!-- text colors -->
-    <color name="strong">#000000</color>
+    <color name="strong">#333333</color>
     <color name="weak">#777777</color>
 
     <!-- part colors -->
