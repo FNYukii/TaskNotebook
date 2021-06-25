@@ -1,7 +1,9 @@
 package com.example.y.tasknotebook
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -42,6 +44,7 @@ class TaskFragment : Fragment() {
     }
 
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -63,6 +66,12 @@ class TaskFragment : Fragment() {
                 return false
             }
         })
+
+        //検索バー以外の領域をタップすると、検索バーからフォーカスを外す！
+        screenCover01.setOnTouchListener { _, _ ->
+            searchView01.clearFocus()
+            false
+        }
 
     }
 
