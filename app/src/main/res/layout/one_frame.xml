@@ -38,7 +38,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2021-06-13 14:32"
-                android:textColor="@color/gray" />
+                android:textColor="@color/weak" />
 
         </LinearLayout>
 
