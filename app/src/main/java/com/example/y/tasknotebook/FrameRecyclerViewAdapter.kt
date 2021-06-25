@@ -40,6 +40,13 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
         holder.frameTitleText.text = task?.title.toString()
         holder.frameDetailText.text = task?.detail.toString()
 
+        //もしtitleがemptyなら、titleTextを非表示にする
+        if(task?.title.isNullOrEmpty()){
+            holder.frameTitleText.visibility = View.GONE
+        }else{
+            holder.frameTitleText.visibility = View.VISIBLE
+        }
+
         //EditActivityへ遷移するクリックリスナーをセット
         holder.itemView.setOnClickListener {
             val intent = Intent(it.context, EditActivity::class.java)
