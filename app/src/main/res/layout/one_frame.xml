@@ -31,16 +31,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_push_pin_24"
-                android:background="@null"
                 app:tint="@color/gray" />
 
-            <ImageView
-                android:id="@+id/frameAchieveImage"
+            <TextView
+                android:id="@+id/frameAchievedDateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_baseline_check_24"
-                android:background="@null"
-                app:tint="@color/gray" />
+                android:text="2021-06-13 14:32"
+                android:textColor="@color/gray" />
 
         </LinearLayout>
 
