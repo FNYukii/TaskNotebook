@@ -44,6 +44,10 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
             holder.framePinImage.visibility = View.GONE
         }
 
+        //達成日時をTextViewへセット
+        val achievedDate: String = task?.achievedYear.toString() + "-" + task?.achievedMonth.toString() + "-" + task?.achievedDay.toString() + " " + task?.achievedHour.toString() + ":" + task?.achievedMinute.toString()
+        holder.frameAchievedDateText.text = achievedDate
+
         //isAchievedの真偽に応じて、達成日時の表示を切り替え
         if(task?.isAchieved == false){
             holder.frameAchievedDateText.visibility = View.GONE
