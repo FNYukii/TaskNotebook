@@ -4,6 +4,7 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.*
@@ -14,6 +15,8 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
 
 
     class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+        val framePinImage: ImageView = itemView.framePinImage
+        val frameAchieveImage: ImageView = itemView.frameAchieveImage
         val frameTitleText: TextView = itemView.frameTitleText
         val frameDetailText: TextView = itemView.frameDetailText
     }
@@ -35,6 +38,16 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
 
         //レコードを取得
         val task = realmResults[position]
+
+        //isPinnedの真偽に応じて、ピンアイコンの表示を切り替え
+        if(task?.isPinned == false){
+            holder.framePinImage.visibility = View.GONE
+        }
+
+        //isAchievedの真偽に応じて、達成アイコンの表示を切り替え
+        if(task?.isAchieved == false){
+            holder.frameAchieveImage.visibility = View.GONE
+        }
 
         //タイトルと説明をTextViewへセット
         holder.frameTitleText.text = task?.title.toString()

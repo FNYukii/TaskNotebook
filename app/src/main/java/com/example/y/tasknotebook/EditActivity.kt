@@ -46,6 +46,7 @@ class EditActivity : AppCompatActivity() {
             achievedDate = task.achievedDate
             achievedHour = task.achievedHour
             achievedMinute = task.achievedMinute
+            setPinIcon()
         }
 
 
@@ -55,6 +56,12 @@ class EditActivity : AppCompatActivity() {
             finish()
         }
 
+        //pinButtonを押すと、ピン止めを切り替える
+        pinButton.setOnClickListener {
+            isPinned =!isPinned
+            setPinIcon()
+        }
+
         //deleteButtonを押すとタスクを削除
         deleteButton.setOnClickListener {
             isGarbage = true
@@ -62,6 +69,16 @@ class EditActivity : AppCompatActivity() {
             finish()
         }
 
+    }
+
+
+    //pinButtonのアイコンを切り替える
+    private fun setPinIcon(){
+        if(isPinned){
+            pinButton.setImageResource(R.drawable.ic_baseline_push_pin_24)
+        }else{
+            pinButton.setImageResource(R.drawable.ic_outline_push_pin_24)
+        }
     }
 
 
