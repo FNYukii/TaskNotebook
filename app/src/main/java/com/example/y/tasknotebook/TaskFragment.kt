@@ -20,11 +20,15 @@ class TaskFragment : Fragment() {
 
     //isPinnedがtrueのレコードを全取得
     private val pinnedResults: RealmResults<Task> = realm.where<Task>()
+        .equalTo("isAchieved", false)
+        .and()
         .equalTo("isPinned", true)
         .findAll()
 
     //isPinnedがfalseのレコードを全取得
     private val notPinnedResults: RealmResults<Task> = realm.where<Task>()
+        .equalTo("isAchieved", false)
+        .and()
         .equalTo("isPinned", false)
         .findAll()
 
