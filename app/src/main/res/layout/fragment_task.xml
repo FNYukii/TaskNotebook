@@ -7,7 +7,6 @@
     tools:context=".TaskFragment">
 
     <ScrollView
-        android:id="@+id/scrollView3"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,22 +18,38 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
+            <SearchView
+                android:id="@+id/searchView01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:queryHint="タスクを検索"
+                android:queryBackground="@null"
+                android:background="@drawable/background_search_view"
+                android:iconifiedByDefault="false"
+                android:layout_margin="16dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/pinRecyclerView"
-                android:overScrollMode="never"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:paddingBottom="32dp"
+                android:overScrollMode="never"
+                android:layout_marginTop="16dp"
+                android:paddingBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/mainRecyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/searchView01" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/mainRecyclerView"
-                android:overScrollMode="never"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:layout_marginTop="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
