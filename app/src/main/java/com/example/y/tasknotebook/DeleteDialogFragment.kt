@@ -22,7 +22,7 @@ class DeleteDialogFragment : DialogFragment() {
         return activity?.let {
             val builder = AlertDialog.Builder(it, R.style.CustomDialog)
             builder.setTitle("確認")
-                .setMessage("タスクを削除しますか?")
+                .setMessage("このタスクを削除しますか?")
                 .setPositiveButton("OK"
                 ) { _, _ ->
                     //EditActivityへ削除命令を送る

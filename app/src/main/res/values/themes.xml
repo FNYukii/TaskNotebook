@@ -29,9 +29,9 @@
     </style>
 
 
-    <style name="CustomDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+    <style name="CustomDialog" parent="ThemeOverlay.AppCompat.Dialog">
 
-        <!-- background -->
+        <!-- dialog background -->
         <item name="android:background">@color/appBackground</item>
 
         <!-- title -->
@@ -40,9 +40,13 @@
         <!-- message -->
         <item name="android:textColorPrimary">@color/weak</item>
 
-        <!-- yes/no button -->
+        <!-- positive/negative button -->
+        <item name="colorPrimary">@color/strong</item>
 
     </style>
+
+
+
 
 
 
