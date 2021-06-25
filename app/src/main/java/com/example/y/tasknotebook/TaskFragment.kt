@@ -104,6 +104,7 @@ class TaskFragment : Fragment() {
             pinRecyclerView.visibility = View.VISIBLE
             mainRecyclerView.visibility = View.VISIBLE
             searchRecyclerView01.visibility = View.GONE
+            messageText01b.visibility = View.INVISIBLE
         }else{
             pinRecyclerView.visibility = View.GONE
             mainRecyclerView.visibility = View.GONE
