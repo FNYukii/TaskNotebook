@@ -181,8 +181,9 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
 
     override fun onDialogAchieveReceive(dialog: DialogFragment) {
         if(!isAchieved){
-            //タスクを達成済みにする
+            //タスクを達成済みにして、ピン止めを解除
             isAchieved = true
+            isPinned = false
             //現在日時を各フィールドに保存
             val now = LocalDateTime.now()
             achievedYear = now.year
