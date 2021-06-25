@@ -72,6 +72,12 @@ class EditActivity : AppCompatActivity() {
     }
 
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        saveRecord()
+    }
+
+
     //pinButtonのアイコンを切り替える
     private fun setPinIcon(){
         if(isPinned){
