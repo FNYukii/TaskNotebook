@@ -2,6 +2,7 @@
     <string name="app_name">TaskNote</string>
 
     <string name="title_task">タスク</string>
-    <string name="title_calendar">カレンダー</string>
-    <string name="title_search">検索</string>
+    <string name="title_achievedTask">達成済み</string>
+    <string name="title_history">履歴</string>
+
 </resources>
