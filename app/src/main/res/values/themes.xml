@@ -27,4 +27,23 @@
         <item name="android:windowBackground">@color/appBackground</item>
 
     </style>
+
+
+    <style name="CustomDialog" parent="Base.Theme.AppCompat.Light.Dialog">
+
+        <!-- background -->
+        <item name="android:background">@color/appBackground</item>
+
+        <!-- title -->
+        <item name="android:textColor">@color/strong</item>
+
+        <!-- message -->
+        <item name="android:textColorPrimary">@color/weak</item>
+
+        <!-- yes/no button -->
+
+    </style>
+
+
+
 </resources>

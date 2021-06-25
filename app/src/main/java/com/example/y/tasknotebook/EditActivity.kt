@@ -2,13 +2,14 @@ package com.example.y.tasknotebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.fragment.app.DialogFragment
 import io.realm.Realm
 import io.realm.RealmObject
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
 
-class EditActivity : AppCompatActivity() {
+class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
 
     //Realmのインスタンス取得
     private var realm: Realm = Realm.getDefaultInstance()
@@ -64,9 +65,8 @@ class EditActivity : AppCompatActivity() {
 
         //deleteButtonを押すとタスクを削除
         deleteButton.setOnClickListener {
-            isGarbage = true
-            saveRecord()
-            finish()
+            val dialogFragment = DeleteDialogFragment()
+            dialogFragment.show(supportFragmentManager, "dialog")
         }
 
     }
@@ -161,6 +161,12 @@ class EditActivity : AppCompatActivity() {
         realm.executeTransaction {
             achievement?.deleteFromRealm()
         }
+    }
+
+    override fun onDialogDeleteReceive(dialog: DialogFragment) {
+        isGarbage = true
+        saveRecord()
+        finish()
     }
 
 
