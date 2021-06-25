@@ -9,6 +9,7 @@ import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
 import java.time.LocalDateTime
+import java.util.*
 
 class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, AchieveDialogFragment.DialogListener {
 
@@ -24,6 +25,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
     private var achievedDay = 0
     private var achievedHour = 0
     private var achievedMinute = 0
+    private var achievedDatetime: Date? = null
     private var isGarbage = false
 
 
@@ -136,6 +138,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task.achievedDay = achievedDay
             task.achievedHour = achievedHour
             task.achievedMinute = achievedMinute
+            task.achievedDatetime = achievedDatetime
         }
     }
 
@@ -157,6 +160,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task?.achievedDay = achievedDay
             task?.achievedHour = achievedHour
             task?.achievedMinute = achievedMinute
+            task?.achievedDatetime = achievedDatetime
         }
     }
 
@@ -191,11 +195,13 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             achievedDay = now.dayOfMonth
             achievedHour = now.hour
             achievedMinute = now.minute
+            achievedDatetime = Date()
             Log.d("hello", "Year: $achievedYear")
             Log.d("hello", "Month: $achievedMonth")
             Log.d("hello", "Date: $achievedDay")
             Log.d("hello", "Hour: $achievedHour")
             Log.d("hello", "Minute: $achievedMinute")
+            Log.d("hello", "Datetime: $achievedDatetime")
         }else{
             //未達成にする
             isAchieved = false
@@ -204,6 +210,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             achievedDay = -1
             achievedHour = -1
             achievedMinute = -1
+            achievedDatetime = null
         }
         saveRecord()
         finish()

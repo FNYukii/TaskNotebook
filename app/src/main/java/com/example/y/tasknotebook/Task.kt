@@ -2,6 +2,7 @@ package com.example.y.tasknotebook
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey
+import java.util.*
 
 open class Task : RealmObject() {
     @PrimaryKey
@@ -15,4 +16,5 @@ open class Task : RealmObject() {
     var achievedDay: Int = -1 //例: 3, 17
     var achievedHour: Int = -1 //例: 7, 11
     var achievedMinute: Int = -1 //例: 9, 34
+    var achievedDatetime: Date? = null
 }
