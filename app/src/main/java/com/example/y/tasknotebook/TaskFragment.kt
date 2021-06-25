@@ -83,6 +83,13 @@ class TaskFragment : Fragment() {
         searchRecyclerView01.layoutManager = GridLayoutManager(this.context, 2)
         searchRecyclerView01.adapter = FrameRecyclerViewAdapter(searchedResults)
 
+        //検索結果が0件なら、画面にメッセージを表示
+        if(searchedResults.size == 0){
+            messageText01b.visibility = View.VISIBLE
+        }else{
+            messageText01b.visibility = View.INVISIBLE
+        }
+
         //queryがemptyなら、searchRecyclerViewは表示しない。
         if(query.isEmpty()){
             pinRecyclerView.visibility = View.VISIBLE
@@ -117,9 +124,9 @@ class TaskFragment : Fragment() {
 
         //未達成のタスクが0件なら、画面にメッセージを表示
         if(pinnedResults.size == 0 && notPinnedResults.size == 0){
-            messageText01.visibility = View.VISIBLE
+            messageText01a.visibility = View.VISIBLE
         }else{
-            messageText01.visibility = View.GONE
+            messageText01a.visibility = View.INVISIBLE
         }
 
     }
