@@ -8,14 +8,18 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <!-- primary -->
+    <!-- frame, menu item default, tool button -->
     <color name="gray">#AAAAAA</color>
+
+    <!-- frame clicked background, SearchView background, buttons in toolbar clicked -->
     <color name="translucentGray">#55AAAAAA</color>
+
+    <!-- floating button, menu item checked -->
     <color name="imageColor">#FF6464</color>
     <color name="lightImageColor">#FF9696</color>
 
     <!-- LIGHT THEME -->
-    <!-- primary -->
+    <!-- text colors -->
     <color name="strong">#000000</color>
     <color name="weak">#777777</color>
 

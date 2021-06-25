@@ -2,7 +2,6 @@
 <resources>
 
     <!-- DARK THEME -->
-    <!-- primary -->
     <color name="strong">#FFFFFF</color>
     <color name="weak">#AAAAAA</color>
 
