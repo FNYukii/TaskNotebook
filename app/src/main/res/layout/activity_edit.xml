@@ -46,19 +46,8 @@
             android:background="@drawable/background_tool_button"
             android:src="@drawable/ic_outline_push_pin_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/colorButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/gray" />
-
-        <ImageButton
-            android:id="@+id/colorButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/deleteButton"
-            android:background="@drawable/background_tool_button"
-            android:src="@drawable/ic_baseline_palette_24"
+            app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/gray" />
 
         <ImageButton
