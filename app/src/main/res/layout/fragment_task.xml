@@ -7,7 +7,7 @@
     tools:context=".TaskFragment">
 
     <TextView
-        android:id="@+id/messageText01a"
+        android:id="@+id/noTaskText01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="まだタスクがありません"
@@ -19,7 +19,6 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -34,7 +33,7 @@
 
 
             <TextView
-                android:id="@+id/messageText01b"
+                android:id="@+id/notSearchedText01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
@@ -76,7 +75,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/mainRecyclerView" />
 
-            <ImageView
+            <View
                 android:id="@+id/screenCover01"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"

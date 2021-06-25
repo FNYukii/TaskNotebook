@@ -3,7 +3,6 @@ package com.example.y.tasknotebook
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -94,9 +93,9 @@ class TaskFragment : Fragment() {
 
         //検索結果が0件なら、画面にメッセージを表示
         if(searchedResults.size == 0){
-            messageText01b.visibility = View.VISIBLE
+            notSearchedText01.visibility = View.VISIBLE
         }else{
-            messageText01b.visibility = View.INVISIBLE
+            notSearchedText01.visibility = View.INVISIBLE
         }
 
         //queryがemptyなら、searchRecyclerViewは表示しない。
@@ -104,7 +103,7 @@ class TaskFragment : Fragment() {
             pinRecyclerView.visibility = View.VISIBLE
             mainRecyclerView.visibility = View.VISIBLE
             searchRecyclerView01.visibility = View.GONE
-            messageText01b.visibility = View.INVISIBLE
+            notSearchedText01.visibility = View.INVISIBLE
         }else{
             pinRecyclerView.visibility = View.GONE
             mainRecyclerView.visibility = View.GONE
@@ -134,9 +133,9 @@ class TaskFragment : Fragment() {
 
         //未達成のタスクが0件なら、画面にメッセージを表示
         if(pinnedResults.size == 0 && notPinnedResults.size == 0){
-            messageText01a.visibility = View.VISIBLE
+            noTaskText01.visibility = View.VISIBLE
         }else{
-            messageText01a.visibility = View.INVISIBLE
+            noTaskText01.visibility = View.INVISIBLE
         }
 
     }

@@ -7,7 +7,7 @@
     tools:context=".AchievedTaskFragment">
 
     <TextView
-        android:id="@+id/messageText02"
+        android:id="@+id/noTaskText02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="まだ達成済みのタスクがありません"
@@ -23,33 +23,65 @@
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:minHeight="500dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <SearchView
-                android:id="@+id/searchView02"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/notSearchedText02"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:queryHint="達成済みのタスクを検索"
-                android:queryBackground="@null"
-                android:background="@drawable/background_search_view"
-                android:iconifiedByDefault="false"
-                android:layout_marginTop="8dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
-                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="32dp"
+                android:text="一致するタスクはありません"
+                android:textColor="@color/weak"
+                android:textSize="18dp"
+                android:visibility="invisible"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintTop_toBottomOf="@id/searchView02" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/achievedRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"
-                android:layout_marginTop="16dp"
+                android:paddingTop="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/searchView02" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/searchRecyclerView02"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingTop="16dp"
+                app:layout_constraintTop_toBottomOf="@id/achievedRecyclerView"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <View
+                android:id="@+id/screenCover02"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <SearchView
+                android:id="@+id/searchView02"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/background_search_view"
+                android:iconifiedByDefault="false"
+                android:queryBackground="@null"
+                android:queryHint="達成済みのタスクを検索"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
