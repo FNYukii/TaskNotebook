@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
@@ -44,10 +45,53 @@ class TaskFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //EditActivityへ遷移
+        //floatingButtonを押すと、EditActivityへ遷移
         floatingButton.setOnClickListener {
             val intent = Intent(this.context, EditActivity::class.java)
             startActivity(intent)
+        }
+
+        //検索バーのqueryが変化するたびに検索する
+        searchView01.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String?): Boolean {
+                val query = newText!!
+                search(query)
+                return false
+            }
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchView01.clearFocus()
+                return false
+            }
+        })
+
+    }
+
+    private fun search(query: String) {
+
+        //queryを含む未達成のタスクをあいまい検索して取得
+        val searchedResults: RealmResults<Task> = realm.where<Task>()
+            .contains("title", query)
+            .and()
+            .equalTo("isAchieved", false)
+            .or()
+            .contains("detail", query)
+            .and()
+            .equalTo("isAchieved", false)
+            .findAll()
+
+        //searchRecyclerView01の処理
+        searchRecyclerView01.layoutManager = GridLayoutManager(this.context, 2)
+        searchRecyclerView01.adapter = FrameRecyclerViewAdapter(searchedResults)
+
+        //queryがemptyなら、searchRecyclerViewは表示しない。
+        if(query.isEmpty()){
+            pinRecyclerView.visibility = View.VISIBLE
+            mainRecyclerView.visibility = View.VISIBLE
+            searchRecyclerView01.visibility = View.GONE
+        }else{
+            pinRecyclerView.visibility = View.GONE
+            mainRecyclerView.visibility = View.GONE
+            searchRecyclerView01.visibility = View.VISIBLE
         }
 
     }
@@ -71,7 +115,7 @@ class TaskFragment : Fragment() {
         mainRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
         mainRecyclerView.adapter = FrameRecyclerViewAdapter(notPinnedResults)
 
-        //タスクが0件なら、画面にメッセージを表示
+        //未達成のタスクが0件なら、画面にメッセージを表示
         if(pinnedResults.size == 0 && notPinnedResults.size == 0){
             messageText01.visibility = View.VISIBLE
         }else{
