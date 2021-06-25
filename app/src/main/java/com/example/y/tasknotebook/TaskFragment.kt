@@ -18,8 +18,15 @@ class TaskFragment : Fragment() {
     //Realmのインスタンスを取得
     var realm: Realm = Realm.getDefaultInstance()
 
-    //全てのレコードを取得
-    private val realmResults: RealmResults<Task> = realm.where<Task>().findAll()
+    //isPinnedがtrueのレコードを全取得
+    private val pinnedResults: RealmResults<Task> = realm.where<Task>()
+        .equalTo("isPinned", true)
+        .findAll()
+
+    //isPinnedがfalseのレコードを全取得
+    private val notPinnedResults: RealmResults<Task> = realm.where<Task>()
+        .equalTo("isPinned", false)
+        .findAll()
 
 
     override fun onCreateView(
@@ -39,17 +46,26 @@ class TaskFragment : Fragment() {
             startActivity(intent)
         }
 
-        //まだpinRecyclerView使わないので非表示
-        pinRecyclerView.visibility = View.GONE
     }
 
 
     override fun onStart() {
         super.onStart()
 
-        //mainRecyclerViewを表示
+        //pinRecyclerViewの処理
+        pinRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
+        pinRecyclerView.adapter = FrameRecyclerViewAdapter(pinnedResults)
+
+        //もしピン止めされたレコードが無いなら、pinRecyclerViewを表示しない
+        if(pinnedResults.size == 0){
+            pinRecyclerView.visibility = View.GONE
+        }else{
+            pinRecyclerView.visibility = View.VISIBLE
+        }
+
+        //mainRecyclerViewの処理
         mainRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
-        mainRecyclerView.adapter = FrameRecyclerViewAdapter(realmResults)
+        mainRecyclerView.adapter = FrameRecyclerViewAdapter(notPinnedResults)
     }
 
 

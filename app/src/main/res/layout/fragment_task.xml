@@ -40,7 +40,6 @@
                 android:layout_height="wrap_content"
                 android:overScrollMode="never"
                 android:layout_marginTop="16dp"
-                android:paddingBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/mainRecyclerView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
