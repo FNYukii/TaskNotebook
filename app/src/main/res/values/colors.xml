@@ -26,6 +26,7 @@
     <!-- part colors -->
     <color name="appBackground">#FFFFFF</color>
     <color name="bottomNavigationBackground">#FFFFFF</color>
+    <color name="frameLine">#CCCCCC</color>
 
 
 </resources>

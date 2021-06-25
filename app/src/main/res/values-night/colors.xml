@@ -8,6 +8,7 @@
     <!-- part colors -->
     <color name="appBackground">#333333</color>
     <color name="bottomNavigationBackground">#444444</color>
+    <color name="frameLine">#777777</color>
 
 
 </resources>
