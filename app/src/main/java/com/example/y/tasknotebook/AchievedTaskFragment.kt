@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_achieved_task.*
 
@@ -22,6 +23,7 @@ class AchievedTaskFragment : Fragment() {
     private val achievedResults: RealmResults<Task> = realm.where<Task>()
         .equalTo("isAchieved", true)
         .findAll()
+        .sort("achievedDatetime", Sort.DESCENDING)
 
 
     override fun onCreateView(

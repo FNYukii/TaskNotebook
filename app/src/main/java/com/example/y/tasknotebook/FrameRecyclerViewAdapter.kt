@@ -10,8 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import io.realm.*
 import kotlinx.android.synthetic.main.one_frame.view.*
 import java.text.SimpleDateFormat
-import java.time.format.DateTimeFormatter
-import java.util.*
 
 
 class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): RecyclerView.Adapter<FrameRecyclerViewAdapter.CustomViewHolder>(){
@@ -50,8 +48,8 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
         //達成日時をTextViewへセット
         if(task?.achievedDatetime != null){
             val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            val newAchievedDatetime: String = formatter.format(task.achievedDatetime).toString()
-            holder.frameAchievedDateText.text = newAchievedDatetime
+            val achievedDatetime: String = formatter.format(task.achievedDatetime).toString()
+            holder.frameAchievedDateText.text = achievedDatetime
         }
 
         //isAchievedの真偽に応じて、達成日時の表示を切り替え
