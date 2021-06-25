@@ -2,14 +2,15 @@ package com.example.y.tasknotebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.DialogFragment
 import io.realm.Realm
-import io.realm.RealmObject
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
+import java.time.LocalDateTime
 
-class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
+class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, AchieveDialogFragment.DialogListener {
 
     //Realmのインスタンス取得
     private var realm: Realm = Realm.getDefaultInstance()
@@ -20,7 +21,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
     private var isPinned = false
     private var achievedYear = 0
     private var achievedMonth = 0
-    private var achievedDate = 0
+    private var achievedDay = 0
     private var achievedHour = 0
     private var achievedMinute = 0
     private var isGarbage = false
@@ -44,7 +45,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
             detailEdit.setText(task.detail)
             achievedYear = task.achievedYear
             achievedMonth = task.achievedMonth
-            achievedDate = task.achievedDate
+            achievedDay = task.achievedDay
             achievedHour = task.achievedHour
             achievedMinute = task.achievedMinute
             setPinIcon()
@@ -57,13 +58,22 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
             finish()
         }
 
+        //achieveButtonを押すと、AchieveDialogを呼び出す
+        achieveButton.setOnClickListener {
+            val dialogFragment = AchieveDialogFragment()
+            val args = Bundle()
+            args.putBoolean("isAchieved", isAchieved)
+            dialogFragment.arguments = args
+            dialogFragment.show(supportFragmentManager, "dialog")
+        }
+
         //pinButtonを押すと、ピン止めを切り替える
         pinButton.setOnClickListener {
             isPinned =!isPinned
             setPinIcon()
         }
 
-        //deleteButtonを押すとタスクを削除
+        //deleteButtonを押すと、DeleteDialogを呼び出す
         deleteButton.setOnClickListener {
             val dialogFragment = DeleteDialogFragment()
             dialogFragment.show(supportFragmentManager, "dialog")
@@ -123,7 +133,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
             task.detail = detailEdit.text.toString()
             task.achievedYear = achievedYear
             task.achievedMonth = achievedMonth
-            task.achievedDate = achievedDate
+            task.achievedDay = achievedDay
             task.achievedHour = achievedHour
             task.achievedMinute = achievedMinute
         }
@@ -144,7 +154,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
             task?.detail = detailEdit.text.toString()
             task?.achievedYear = achievedYear
             task?.achievedMonth = achievedMonth
-            task?.achievedDate = achievedDate
+            task?.achievedDay = achievedDay
             task?.achievedHour = achievedHour
             task?.achievedMinute = achievedMinute
         }
@@ -165,6 +175,35 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener {
 
     override fun onDialogDeleteReceive(dialog: DialogFragment) {
         isGarbage = true
+        saveRecord()
+        finish()
+    }
+
+    override fun onDialogAchieveReceive(dialog: DialogFragment) {
+        if(!isAchieved){
+            //タスクを達成済みにする
+            isAchieved = true
+            //現在日時を各フィールドに保存
+            val now = LocalDateTime.now()
+            achievedYear = now.year
+            achievedMonth = now.monthValue
+            achievedDay = now.dayOfMonth
+            achievedHour = now.hour
+            achievedMinute = now.minute
+            Log.d("hello", "Year: $achievedYear")
+            Log.d("hello", "Month: $achievedMonth")
+            Log.d("hello", "Date: $achievedDay")
+            Log.d("hello", "Hour: $achievedHour")
+            Log.d("hello", "Minute: $achievedMinute")
+        }else{
+            //未達成にする
+            isAchieved = false
+            achievedYear = -1
+            achievedMonth = -1
+            achievedDay = -1
+            achievedHour = -1
+            achievedMinute = -1
+        }
         saveRecord()
         finish()
     }
