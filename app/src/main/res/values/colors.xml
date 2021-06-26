@@ -11,8 +11,8 @@
     <!-- frame, menu item default, tool button -->
     <color name="gray">#AAAAAA</color>
 
-    <!-- frame clicked background, SearchView background, buttons in toolbar clicked -->
-    <color name="translucentGray">#55AAAAAA</color>
+    <!-- frame clicked background,tile clicked background, buttons in toolbar clicked -->
+    <color name="translucentGray">#55777777</color>
 
     <!-- floating button, menu item checked -->
     <color name="imageColor">#FF6464</color>
@@ -27,7 +27,7 @@
     <color name="appBackground">#FFFFFF</color>
     <color name="bottomNavigationBackground">#FFFFFF</color>
     <color name="frameLine">#CCCCCC</color>
-    <color name="searchViewBackground">#CCCCCC</color>
+    <color name="searchViewBackground">#DDDDDD</color>
 
     <!-- calendar tile colors -->
     <color name="red00">#33FF6464</color>
