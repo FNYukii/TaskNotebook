@@ -46,12 +46,6 @@ class PagerFragment: Fragment() {
     }
 
 
-    override fun onStart() {
-        super.onStart()
-        calendarRecyclerView.adapter = TileRecyclerViewAdapter(days)
-    }
-
-
     private fun Date.offset(month: Int = 0) {
         time = Calendar.getInstance().apply {
             add(Calendar.MONTH, month)
