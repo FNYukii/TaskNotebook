@@ -110,8 +110,6 @@ class TileRecyclerViewAdapter(
                 val intent = Intent(it.context, OptionalSearchActivity::class.java)
                 it.context.startActivity(intent)
             }
-
-
         }
 
     }
