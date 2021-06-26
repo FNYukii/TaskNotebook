@@ -63,7 +63,10 @@ class TileRecyclerViewAdapter(
             holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.strong))
         }
 
-
+        //もし当日がnullなら、tileを非表示
+        if(days[position] == null){
+            holder.itemView.tileLayout.visibility = View.INVISIBLE
+        }
 
         //当日がnullでない時だけ、tileの色の処理を行う
         if(days[position] != null){
@@ -87,34 +90,21 @@ class TileRecyclerViewAdapter(
                 .findAll()
 
             //当日のタスク達成数に応じて、tileの背景色を変更
-            if (realmResults.size >= 4){
-                holder.itemView.tileLayout.setBackgroundResource( R.drawable.background_tile_04)
-            }else if(realmResults.size >= 3){
-                holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
-            }else if(realmResults.size >= 2){
-                holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
-            }else if(realmResults.size >= 1){
-                holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
+            when(realmResults.size){
+                0 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_00)
+                1 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
+                2 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
+                3 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
+                else -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
             }
 
-
-
-
-
+            //当日のタスク達成数が1件以上なら、dayTextを非表示
+            if(realmResults.size != 0){
+                holder.itemView.dayText.visibility = View.INVISIBLE
+            }
         }
 
-
-
-
-
-
-
-
-
-
-
     }
-
 
 
 }
