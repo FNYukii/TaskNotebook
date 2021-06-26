@@ -1,6 +1,7 @@
 package com.example.y.tasknotebook
 
 import android.content.Intent
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
 
     class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val framePinImage: ImageView = itemView.framePinImage
+        val frameAchieveImage: ImageView = itemView.frameAchieveImage
         val frameAchievedDateText: TextView = itemView.frameAchievedDateText
         val frameTitleText: TextView = itemView.frameTitleText
         val frameDetailText: TextView = itemView.frameDetailText
@@ -52,9 +54,10 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
             holder.frameAchievedDateText.text = achievedDatetime
         }
 
-        //isAchievedの真偽に応じて、達成日時の表示を切り替え
+        //isAchievedの真偽に応じて、達成アイコンと達成日時の表示を切り替え
         if(task?.isAchieved == false){
             holder.frameAchievedDateText.visibility = View.GONE
+            holder.frameAchieveImage.visibility = View.GONE
         }
 
         //タイトルと説明をTextViewへセット

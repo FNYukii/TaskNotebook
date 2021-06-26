@@ -33,11 +33,20 @@
                 android:src="@drawable/ic_baseline_push_pin_24"
                 app:tint="@color/gray" />
 
+            <ImageView
+                android:id="@+id/frameAchieveImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_baseline_check_24"
+                app:tint="@color/gray" />
+
             <TextView
                 android:id="@+id/frameAchievedDateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="2021-06-13 14:32"
+                android:textSize="17dp"
+                android:paddingStart="4dp"
                 android:textColor="@color/weak" />
 
         </LinearLayout>
