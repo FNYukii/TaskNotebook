@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.one_frame.view.*
 import java.text.SimpleDateFormat
 
 
-class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): RecyclerView.Adapter<FrameRecyclerViewAdapter.CustomViewHolder>(){
+class FrameRecyclerViewAdapter(
+    private val realmResults: RealmResults<Task>,
+    private val isOptionalSearch: Boolean
+    ): RecyclerView.Adapter<FrameRecyclerViewAdapter.CustomViewHolder>(){
 
 
     class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
@@ -58,7 +61,7 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
 
         //達成時刻をTextViewへセット
         if(task?.achievedDate != null){
-            val formatter = SimpleDateFormat("HH-mm")
+            val formatter = SimpleDateFormat("HH:mm")
             val achievedTime: String = formatter.format(task.achievedDate!!).toString()
             holder.frameAchievedTimeText.text = achievedTime
         }
@@ -68,6 +71,11 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
             holder.frameAchievedDateText.visibility = View.GONE
             holder.frameAchievedTimeText.visibility = View.GONE
             holder.frameAchieveImage.visibility = View.GONE
+        }
+
+        //もしクラスの呼び出し元がOptionalSearchActivityなら、達成年月日を非表示
+        if(isOptionalSearch){
+            holder.frameAchievedDateText.visibility = View.GONE
         }
 
         //タイトルと説明をTextViewへセット

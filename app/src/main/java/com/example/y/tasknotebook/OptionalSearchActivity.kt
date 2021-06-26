@@ -70,7 +70,7 @@ class OptionalSearchActivity : AppCompatActivity() {
 
         //optionalSearchRecyclerViewの処理
         optionalSearchRecyclerView.layoutManager = GridLayoutManager(this, 2)
-        optionalSearchRecyclerView.adapter = FrameRecyclerViewAdapter(realmResults)
+        optionalSearchRecyclerView.adapter = FrameRecyclerViewAdapter(realmResults, true)
 
         //realmResultsが0件なら、画面にメッセージを表示
         if(realmResults.size == 0){
