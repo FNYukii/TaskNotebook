@@ -1,5 +1,6 @@
 package com.example.y.tasknotebook
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
         val framePinImage: ImageView = itemView.framePinImage
         val frameAchieveImage: ImageView = itemView.frameAchieveImage
         val frameAchievedDateText: TextView = itemView.frameAchievedDateText
+        val frameAchievedTimeText: TextView = itemView.frameAchievedTimeText
         val frameTitleText: TextView = itemView.frameTitleText
         val frameDetailText: TextView = itemView.frameDetailText
     }
@@ -36,6 +38,7 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
         //レコードを取得
@@ -46,16 +49,24 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
             holder.framePinImage.visibility = View.GONE
         }
 
-        //達成日時をTextViewへセット
+        //達成年月日をTextViewへセット
         if(task?.achievedDate != null){
-            val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            val achievedDatetime: String = formatter.format(task.achievedDate).toString()
-            holder.frameAchievedDateText.text = achievedDatetime
+            val formatter = SimpleDateFormat("yyyy-MM-dd")
+            val achievedDate: String = formatter.format(task.achievedDate!!).toString()
+            holder.frameAchievedDateText.text = achievedDate
         }
 
-        //isAchievedの真偽に応じて、達成アイコンと達成日時の表示を切り替え
+        //達成時刻をTextViewへセット
+        if(task?.achievedDate != null){
+            val formatter = SimpleDateFormat("HH-mm")
+            val achievedTime: String = formatter.format(task.achievedDate!!).toString()
+            holder.frameAchievedTimeText.text = achievedTime
+        }
+
+        //isAchievedの真偽に応じて、達成アイコンと達成年月日・達成時刻の表示を切り替え
         if(task?.isAchieved == false){
             holder.frameAchievedDateText.visibility = View.GONE
+            holder.frameAchievedTimeText.visibility = View.GONE
             holder.frameAchieveImage.visibility = View.GONE
         }
 

@@ -44,10 +44,19 @@
                 android:id="@+id/frameAchievedDateText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2021-06-13 14:32"
-                android:textSize="17dp"
+                android:text="2021-06-13"
+                android:textSize="17sp"
                 android:paddingStart="4dp"
                 android:textColor="@color/weak" />
+
+            <TextView
+                android:id="@+id/frameAchievedTimeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="21:45"
+                android:textSize="17sp"
+                android:paddingStart="4dp"
+                android:textColor="@color/weak"/>
 
         </LinearLayout>
 
