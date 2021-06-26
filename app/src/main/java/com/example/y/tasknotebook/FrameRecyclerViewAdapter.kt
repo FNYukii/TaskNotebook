@@ -21,7 +21,6 @@ class FrameRecyclerViewAdapter(
 
     class CustomViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val framePinImage: ImageView = itemView.framePinImage
-        val frameAchieveImage: ImageView = itemView.frameAchieveImage
         val frameAchievedDateText: TextView = itemView.frameAchievedDateText
         val frameAchievedTimeText: TextView = itemView.frameAchievedTimeText
         val frameTitleText: TextView = itemView.frameTitleText
@@ -70,7 +69,6 @@ class FrameRecyclerViewAdapter(
         if(task?.isAchieved == false){
             holder.frameAchievedDateText.visibility = View.GONE
             holder.frameAchievedTimeText.visibility = View.GONE
-            holder.frameAchieveImage.visibility = View.GONE
         }
 
         //もしクラスの呼び出し元がOptionalSearchActivityなら、達成年月日を非表示
