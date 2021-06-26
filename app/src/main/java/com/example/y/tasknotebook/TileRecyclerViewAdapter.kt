@@ -2,6 +2,7 @@ package com.example.y.tasknotebook
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.graphics.Color
 import android.media.Image
 import android.util.Log
@@ -103,6 +104,14 @@ class TileRecyclerViewAdapter(
             if(realmResults.size != 0){
                 holder.itemView.dayText.visibility = View.INVISIBLE
             }
+
+            //タイルを押すと、OptionalSearchActivityへ遷移
+            holder.itemView.tileLayout.setOnClickListener {
+                val intent = Intent(it.context, OptionalSearchActivity::class.java)
+                it.context.startActivity(intent)
+            }
+
+
         }
 
     }
