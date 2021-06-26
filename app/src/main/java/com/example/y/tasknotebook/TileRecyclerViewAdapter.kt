@@ -1,7 +1,10 @@
 package com.example.y.tasknotebook
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.graphics.Color
 import android.media.Image
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,9 +13,14 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import io.realm.Realm
+import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.one_tile.view.*
+import java.text.SimpleDateFormat
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
+import java.util.*
+
 
 class TileRecyclerViewAdapter(
     private val days: Array<LocalDate?>
@@ -22,7 +30,7 @@ class TileRecyclerViewAdapter(
 
     class CustomViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val dayText: TextView = itemView.dayText
-        val tileImage: ConstraintLayout = itemView.tileLayout
+        val tileLayout: ConstraintLayout = itemView.tileLayout
     }
 
 
@@ -38,6 +46,7 @@ class TileRecyclerViewAdapter(
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
 
@@ -53,6 +62,54 @@ class TileRecyclerViewAdapter(
         if(days[position] == LocalDate.now()){
             holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.strong))
         }
+
+
+
+        //当日がnullでない時だけ、tileの色の処理を行う
+        if(days[position] != null){
+
+            //当日開始日時 例: Tue Jun 29 00:00:00 GMT+09:00 2021
+            val formatter = SimpleDateFormat("yyyy-MM-dd")
+            val startDate: Date = formatter.parse(days[position].toString())!!
+
+            //当日終了日時 例: Tue Jun 29 23:59:59 GMT+09:00 2021
+            val endDate:Date = formatter.parse(days[position].toString())!!
+            endDate.hours = 23
+            endDate.minutes = 59
+            endDate.seconds = 59
+
+            //この後レコード検索を行うので、Realmのインスタンスを取得
+            val realm = Realm.getDefaultInstance()
+
+            //当日のタスクの達成数を取得
+            val realmResults = realm.where<Task>()
+                .between("achievedDatetime", startDate, endDate)
+                .findAll()
+
+            //当日のタスク達成数に応じて、tileの背景色を変更
+            if (realmResults.size >= 4){
+                holder.itemView.tileLayout.setBackgroundResource( R.drawable.background_tile_04)
+            }else if(realmResults.size >= 3){
+                holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
+            }else if(realmResults.size >= 2){
+                holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
+            }else if(realmResults.size >= 1){
+                holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
+            }
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
 
 
 

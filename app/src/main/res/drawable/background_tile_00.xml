@@ -4,10 +4,9 @@
     <!-- default -->
     <item android:state_pressed="false" android:state_focused="false">
         <shape>
-            <solid android:color="@color/tile02"/>
             <stroke
                 android:width="1dp"
-                android:color="@color/tile02" />
+                android:color="@color/gray" />
             <corners android:radius="5dp" />
         </shape>
     </item>
@@ -15,11 +14,10 @@
     <!-- focused -->
     <item android:state_pressed="true" android:state_focused="false" tools:ignore="StateListReachable">
         <shape android:shape="rectangle">
-            <solid android:color="@color/tile02" />
             <stroke
                 android:width="1dp"
                 android:color="@color/gray" />
-            <corners android:radius="5dp" />
+            <corners android:radius="5dp"/>
         </shape>
     </item>
 
@@ -30,8 +28,24 @@
             <stroke
                 android:width="1dp"
                 android:color="@color/gray" />
-            <corners android:radius="5dp" />
+            <corners android:radius="5dp"/>
         </shape>
     </item>
 
 </selector>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
