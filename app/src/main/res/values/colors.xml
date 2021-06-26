@@ -27,6 +27,7 @@
     <color name="appBackground">#FFFFFF</color>
     <color name="bottomNavigationBackground">#FFFFFF</color>
     <color name="frameLine">#CCCCCC</color>
+    <color name="searchViewBackground">#CCCCCC</color>
 
     <!-- calendar tile colors -->
     <color name="red00">#33FF6464</color>

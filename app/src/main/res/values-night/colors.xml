@@ -9,6 +9,7 @@
     <color name="appBackground">#222222</color>
     <color name="bottomNavigationBackground">#333333</color>
     <color name="frameLine">#777777</color>
+    <color name="searchViewBackground">#444444</color>
 
 
 </resources>
