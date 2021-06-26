@@ -95,7 +95,8 @@ class TileRecyclerViewAdapter(
                 1 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
                 2 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
                 3 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
-                else -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
+                4 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
+                else -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_05)
             }
 
             //当日のタスク達成数が1件以上なら、dayTextを非表示
