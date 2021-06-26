@@ -28,7 +28,7 @@
     <color name="bottomNavigationBackground">#FFFFFF</color>
     <color name="frameLine">#CCCCCC</color>
 
-    <!-- red colors -->
+    <!-- calendar tile colors -->
     <color name="red01">#55FF6464</color>
     <color name="red02">#77FF6464</color>
     <color name="red03">#AAFF6464</color>
