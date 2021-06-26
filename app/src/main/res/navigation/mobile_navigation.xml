@@ -17,6 +17,6 @@
 
     <fragment
         android:id="@+id/navigation_third"
-        android:name="com.example.y.tasknotebook.HistoryFragment"
-        tools:layout="@layout/fragment_history" />
+        android:name="com.example.y.tasknotebook.GraphFragment"
+        tools:layout="@layout/fragment_graph" />
 </navigation>
