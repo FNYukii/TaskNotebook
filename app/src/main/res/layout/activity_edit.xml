@@ -29,22 +29,22 @@
             app:tint="@color/gray" />
 
         <ImageButton
-            android:id="@+id/achieveButton"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:background="@drawable/background_tool_button"
-            android:src="@drawable/ic_baseline_check_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/pinButton"
-            app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/gray" />
-
-        <ImageButton
             android:id="@+id/pinButton"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:background="@drawable/background_tool_button"
             android:src="@drawable/ic_outline_push_pin_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/achieveButton"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/gray" />
+
+        <ImageButton
+            android:id="@+id/achieveButton"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:background="@drawable/background_tool_button"
+            android:src="@drawable/ic_baseline_check_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/deleteButton"
             app:layout_constraintTop_toTopOf="parent"
