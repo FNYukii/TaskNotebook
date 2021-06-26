@@ -29,10 +29,10 @@
     <color name="frameLine">#CCCCCC</color>
 
     <!-- graph tile colors -->
-    <color name="tile1">#FFC3C3</color>
-    <color name="tile2">#FFA4A4</color>
-    <color name="tile3">#FF7E7E</color>
-    <color name="tile4">#FF6161</color>
+    <color name="tile01">#FFC3C3</color>
+    <color name="tile02">#FFA4A4</color>
+    <color name="tile03">#FF7E7E</color>
+    <color name="tile04">#FF6161</color>
 
 
 
