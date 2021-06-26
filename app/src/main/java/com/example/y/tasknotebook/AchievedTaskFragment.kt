@@ -26,7 +26,7 @@ class AchievedTaskFragment : Fragment() {
     private val achievedResults: RealmResults<Task> = realm.where<Task>()
         .equalTo("isAchieved", true)
         .findAll()
-        .sort("achievedDatetime", Sort.DESCENDING)
+        .sort("achievedDate", Sort.DESCENDING)
 
 
     override fun onCreateView(

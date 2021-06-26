@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="まだタスクがありません"
         android:textColor="@color/weak"
-        android:textSize="18dp"
+        android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

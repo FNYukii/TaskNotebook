@@ -2,14 +2,12 @@ package com.example.y.tasknotebook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
-import java.time.LocalDateTime
 import java.util.*
 
 class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, AchieveDialogFragment.DialogListener {
@@ -45,7 +43,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             isPinned = task.isPinned
             titleEdit.setText(task.title)
             detailEdit.setText(task.detail)
-            achievedDatetime = task.achievedDatetime
+            achievedDatetime = task.achievedDate
             setPinIcon()
 
             //もし、達成済みのタスクなら、pinButtonは非表示
@@ -134,7 +132,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task.isPinned = isPinned
             task.title = titleEdit.text.toString()
             task.detail = detailEdit.text.toString()
-            task.achievedDatetime = achievedDatetime
+            task.achievedDate = achievedDatetime
         }
     }
 
@@ -151,7 +149,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task?.isPinned = isPinned
             task?.title = titleEdit.text.toString()
             task?.detail = detailEdit.text.toString()
-            task?.achievedDatetime = achievedDatetime
+            task?.achievedDate = achievedDatetime
         }
     }
 

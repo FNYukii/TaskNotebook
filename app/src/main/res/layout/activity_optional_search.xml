@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".OptionalSearchActivity">
 
+    <TextView
+        android:id="@+id/messageText03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="この日に達成したタスクはありません"
+        android:textColor="@color/weak"
+        android:textSize="18sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/toolbar02"
         android:layout_width="match_parent"
@@ -32,8 +44,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="YYYY年 MM月 dd日"
-            android:textSize="20dp"
-            android:textColor="@color/weak"
+            android:textSize="25dp"
+            android:textColor="@color/gray"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,7 +1,6 @@
 package com.example.y.tasknotebook
 
 import android.content.Intent
-import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -48,9 +47,9 @@ class FrameRecyclerViewAdapter(private val realmResults: RealmResults<Task>): Re
         }
 
         //達成日時をTextViewへセット
-        if(task?.achievedDatetime != null){
+        if(task?.achievedDate != null){
             val formatter = SimpleDateFormat("yyyy-MM-dd HH:mm")
-            val achievedDatetime: String = formatter.format(task.achievedDatetime).toString()
+            val achievedDatetime: String = formatter.format(task.achievedDate).toString()
             holder.frameAchievedDateText.text = achievedDatetime
         }
 

@@ -11,5 +11,5 @@ open class Task : RealmObject() {
     var isPinned: Boolean = false
     var title: String = ""
     var detail: String = ""
-    var achievedDatetime: Date? = null
+    var achievedDate: Date? = null
 }
