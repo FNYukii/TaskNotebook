@@ -3,6 +3,7 @@ package com.example.y.tasknotebook
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.fragment.app.DialogFragment
 import io.realm.Realm
 import io.realm.kotlin.createObject
@@ -33,15 +34,24 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
 
         //もしIntentからタスクのidを受け取ったら、そのタスクを編集する
         if(id != 0){
+
+            //編集対象のレコードを取得
             val task = realm.where<Task>()
                 .equalTo("id", id)
                 .findFirst()
+
+            //各フィールドの値を変数へ格納したり、Viewへセットしたりする
             isAchieved = task?.isAchieved!!
             isPinned = task.isPinned
             titleEdit.setText(task.title)
             detailEdit.setText(task.detail)
             achievedDatetime = task.achievedDatetime
             setPinIcon()
+
+            //もし、達成済みのタスクなら、pinButtonは非表示
+            if(isAchieved){
+                pinButton.visibility = View.GONE
+            }
         }
 
 
