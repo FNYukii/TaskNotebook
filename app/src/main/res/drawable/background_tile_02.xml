@@ -12,7 +12,7 @@
     <!-- focused -->
     <item android:state_pressed="true" android:state_focused="false" tools:ignore="StateListReachable">
         <shape android:shape="rectangle">
-            <solid android:color="@color/red02" />
+            <solid android:color="@color/red01" />
             <corners android:radius="5dp" />
         </shape>
     </item>
