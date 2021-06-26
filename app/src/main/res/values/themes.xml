@@ -41,7 +41,7 @@
         <item name="android:textColorPrimary">@color/weak</item>
 
         <!-- positive/negative button -->
-        <item name="colorPrimary">@color/strong</item>
+        <item name="colorPrimary">@color/imageColor</item>
 
     </style>
 
