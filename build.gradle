@@ -23,6 +23,9 @@ allprojects {
         google()
         mavenCentral()
         jcenter()
+
+        //MPAndroidChart
+        maven { url 'https://jitpack.io' }
     }
 }
 
