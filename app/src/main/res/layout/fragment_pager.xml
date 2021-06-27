@@ -20,6 +20,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/lineChart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/dayOfWeekContainer"
+        app:layout_constraintTop_toBottomOf="@id/monthText" />
+
     <LinearLayout
         android:id="@+id/dayOfWeekContainer"
         android:layout_width="match_parent"
@@ -27,8 +37,9 @@
         android:layout_marginTop="16dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/calendarRecyclerView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/monthText">
+        app:layout_constraintTop_toBottomOf="@id/lineChart">
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,21 +104,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:overScrollMode="never"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dayOfWeekContainer" />
-
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/lineChart"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/calendarRecyclerView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

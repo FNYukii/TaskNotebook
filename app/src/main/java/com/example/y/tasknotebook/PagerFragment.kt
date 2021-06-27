@@ -168,19 +168,15 @@ class PagerFragment: Fragment() {
         lineChart.setTouchEnabled(false)
         lineChart.xAxis.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.axisLeft.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
-        lineChart.axisRight.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
+        lineChart.axisRight.isEnabled = false
         lineChart.axisLeft.axisMinimum = 0f
-        lineChart.axisRight.axisMinimum = 0f
         lineChart.axisLeft.granularity = 1f
-        lineChart.axisRight.granularity = 1f
 
         val maxValue = achievedData.maxOrNull() ?: 0
         if(maxValue > 5){
             lineChart.axisLeft.axisMaximum = maxValue.toFloat()
-            lineChart.axisRight.axisMaximum = maxValue.toFloat()
         }else{
             lineChart.axisLeft.axisMaximum = 5f
-            lineChart.axisRight.axisMaximum = 5f
         }
 
 
