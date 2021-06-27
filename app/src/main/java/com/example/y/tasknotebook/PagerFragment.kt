@@ -1,11 +1,17 @@
 package com.example.y.tasknotebook
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
+import com.github.mikephil.charting.data.Entry
+import com.github.mikephil.charting.data.LineData
+import com.github.mikephil.charting.data.LineDataSet
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import kotlinx.android.synthetic.main.fragment_pager.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -35,13 +41,17 @@ class PagerFragment: Fragment() {
         val position = arguments?.getInt("position") ?: 0
         val offsetMonth: Int = 0 - (pageSize / 2 - position)
 
-        //一ヵ月分の日付情報をDayRecyclerViewAdapterへ渡して、それをcalendarRecyclerViewのAdapterとする
+        //一ヵ月分の日付情報を使って、calendarRecyclerViewを表示
+        calendarRecyclerView.layoutManager = GridLayoutManager(this.context, 7)
         days = createDays(offsetMonth)
         calendarRecyclerView.adapter = TileRecyclerViewAdapter(days)
-        calendarRecyclerView.layoutManager = GridLayoutManager(this.context, 7)
 
-        //labelText2を更新
+        //monthTextを更新
         monthText.text = SimpleDateFormat("yyyy年 M月", Locale.JAPANESE).format(Date().apply { offset(month = offsetMonth) })
+
+        //lineChartを表示
+        setLineChart()
+
 
     }
 
@@ -92,6 +102,74 @@ class PagerFragment: Fragment() {
 
         //配列daysをreturn
         return days.toTypedArray()
+    }
+
+
+    private fun setLineChart(){
+        //以下、lineChartViewの処理
+        //X軸データ 値は1..31
+        val x = listOf<Float>(
+            1f, 2f, 3f, 4f, 5f, 6f, 7f,
+            8f, 9f, 10f, 11f, 12f, 13f, 14f,
+            15f, 16f, 17f, 18f, 19f, 20f, 21f,
+            22f, 23f, 24f, 25f, 26f, 27f, 28f,
+            29f, 30f, 31f
+        )
+
+        //Y軸データ 値はランダム
+        val y = listOf<Float>(
+            2f, 2f, 3f, 4f, 2f, 4f, 1f,
+            1f, 4f, 3f, 0f, 0f, 1f, 2f,
+            3f, 2f, 3f, 4f, 3f, 3f, 4f,
+            2f, 0f, 4f, 5f, 0f, 2f, 3f,
+            1f, 6f, 2f
+        )
+
+        //1. Entryにデータを格納
+        val entryList = mutableListOf<Entry>() //1本目の線
+        for(i in x.indices){
+            entryList.add(
+                Entry(x[i], y[i])
+            )
+        }
+
+        //LineDataSetのList
+        val lineDataSets = mutableListOf<ILineDataSet>()
+        //2. DataSetにデータを格納
+        val lineDataSet = LineDataSet(entryList, "square")
+
+        //3. DataSetにフォーマット指定
+        //線の色を赤くする
+        lineDataSet.color = ContextCompat.getColor(this.requireContext(), R.color.imageColor)
+        //データ点を非表示
+        lineDataSet.setDrawCircles(false)
+        //データ値を非表示
+        lineDataSet.setDrawValues(false)
+
+
+        //リストに格納
+        lineDataSets.add(lineDataSet)
+
+        //4. LineDataにLineDataSetを格納
+        val lineData = LineData(lineDataSets)
+        //5. LineChartにLineDataを格納
+        lineChart.data = lineData
+
+        //6. lineChartのフォーマット指定
+        //凡例を非表示
+        lineChart.legend.isEnabled = false
+        //説明ラベルを非表示
+        lineChart.description.isEnabled = false
+        //タッチ操作を無効にする
+        lineChart.setTouchEnabled(false)
+
+        lineChart.xAxis.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
+        lineChart.axisLeft.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
+        lineChart.axisRight.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
+
+        //7. LineChart更新
+        lineChart.invalidate()
+
     }
 
 
