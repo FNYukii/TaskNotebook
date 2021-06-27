@@ -1,5 +1,6 @@
 package com.example.y.tasknotebook
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -8,6 +9,7 @@ import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, AchieveDialogFragment.DialogListener {
@@ -23,6 +25,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
     private var isGarbage = false
 
 
+    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
@@ -46,13 +49,20 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             achievedDatetime = task.achievedDate
             setPinIcon()
 
-            //もし達成済みのタスクなら、pinButtonは非表示&達成日時を表示
+            //もし達成済みのタスクなら…
             if(isAchieved){
+
+                //pinButtonは非表示&達成日時を表示
                 pinButton.visibility = View.GONE
                 achievedDatetimeContainer.visibility = View.VISIBLE
-            }else{
-                pinButton.visibility = View.VISIBLE
-                achievedDatetimeContainer.visibility = View.GONE
+
+                //達成日をTextViewへセット
+                val dateFormatter = SimpleDateFormat("yyyy-MM-dd")
+                achievedDateText.text = dateFormatter.format(task.achievedDate!!)
+
+                //達成時刻をTextViewへセット
+                val timeFormatter = SimpleDateFormat("HH-mm")
+                achievedTimeText.text = timeFormatter.format(task.achievedDate!!)
             }
         }
 
