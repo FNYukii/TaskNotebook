@@ -61,7 +61,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
                 achievedDateText.text = dateFormatter.format(task.achievedDate!!)
 
                 //達成時刻をTextViewへセット
-                val timeFormatter = SimpleDateFormat("HH-mm")
+                val timeFormatter = SimpleDateFormat("HH:mm")
                 achievedTimeText.text = timeFormatter.format(task.achievedDate!!)
             }
         }
