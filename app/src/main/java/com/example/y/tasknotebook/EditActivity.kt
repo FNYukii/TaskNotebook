@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.DialogFragment
 import io.realm.Realm
@@ -66,11 +67,11 @@ class EditActivity :
 
                 //達成日をTextViewへセット
                 val dateFormatter = SimpleDateFormat("yyyy-MM-dd")
-                achievedDateText.text = dateFormatter.format(task.achievedDate!!)
+                achievedDateText.text = dateFormatter.format(achievedDate!!)
 
                 //達成時刻をTextViewへセット
                 val timeFormatter = SimpleDateFormat("HH:mm")
-                achievedTimeText.text = timeFormatter.format(task.achievedDate!!)
+                achievedTimeText.text = timeFormatter.format(achievedDate!!)
             }
         }
 
@@ -223,12 +224,32 @@ class EditActivity :
         finish()
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun selectedDate(year: Int, month: Int, date: Int) {
 
+
+        //達成日を変更
+        Log.d("hello", "year: $year")
+//        achievedDate?.year = year  //なぜか正しい年を格納できない…
+        Log.d("hello", "achievedDate.year: ${achievedDate?.year}")
+        achievedDate?.month = month
+        achievedDate?.date = date
+
+        //達成日をTextViewへセット
+        val dateFormatter = SimpleDateFormat("yyyy-MM-dd")
+        achievedDateText.text = dateFormatter.format(achievedDate!!)
     }
 
+    @SuppressLint("SimpleDateFormat")
     override fun selectedTime(hour: Int, minute: Int) {
 
+        //達成時刻を変更
+        achievedDate?.hours = hour
+        achievedDate?.minutes = minute
+
+        //達成時刻をTextViewへセット
+        val timeFormatter = SimpleDateFormat("HH:mm")
+        achievedTimeText.text = timeFormatter.format(achievedDate!!)
     }
 
 
