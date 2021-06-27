@@ -167,9 +167,9 @@ class PagerFragment: Fragment() {
         lineChart.description.isEnabled = false
         lineChart.setTouchEnabled(false)
         lineChart.extraTopOffset = 5f
-        lineChart.xAxis.textColor = ContextCompat.getColor(this.requireContext(), R.color.gray)
+        lineChart.xAxis.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.xAxis.textSize = 14f
-        lineChart.axisLeft.textColor = ContextCompat.getColor(this.requireContext(), R.color.gray)
+        lineChart.axisLeft.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.axisLeft.textSize = 14f
         lineChart.axisLeft.axisMinimum = 0f
         lineChart.axisLeft.granularity = 1f

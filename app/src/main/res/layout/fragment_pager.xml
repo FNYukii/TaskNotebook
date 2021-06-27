@@ -14,7 +14,7 @@
         android:text="YYYY年 M月"
         android:textSize="30dp"
         android:layout_marginTop="8dp"
-        android:textColor="@color/gray"
+        android:textColor="@color/weak"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
