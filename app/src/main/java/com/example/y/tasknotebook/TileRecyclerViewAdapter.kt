@@ -78,9 +78,6 @@ class TileRecyclerViewAdapter(
             endDatetime.minutes = 59
             endDatetime.seconds = 59
 
-            Log.d("hello", "start: $startDatetime")
-            Log.d("hello", "end: $endDatetime")
-
             //この後レコード検索を行うので、Realmのインスタンスを取得
             val realm = Realm.getDefaultInstance()
 

@@ -105,30 +105,20 @@ class PagerFragment: Fragment() {
 
 
     private fun setLineChart(){
-        //以下、lineChartViewの処理
-        //X軸データ 値は1..31
-        val x = listOf<Float>(
-            1f, 2f, 3f, 4f, 5f, 6f, 7f,
-            8f, 9f, 10f, 11f, 12f, 13f, 14f,
-            15f, 16f, 17f, 18f, 19f, 20f, 21f,
-            22f, 23f, 24f, 25f, 26f, 27f, 28f,
-            29f, 30f, 31f
-        )
-
-        //Y軸データ 値はランダム
+        //Y軸データ 日付ごとの達成数を格納する
         val y = listOf<Float>(
             2f, 2f, 3f, 4f, 2f, 4f, 1f,
             1f, 4f, 3f, 0f, 0f, 1f, 2f,
             3f, 2f, 3f, 4f, 3f, 3f, 4f,
             2f, 0f, 4f, 5f, 0f, 2f, 3f,
-            1f, 6f, 2f
+            1f, 6f, 3f
         )
 
         //1. Entryにデータを格納
         val entryList = mutableListOf<Entry>() //1本目の線
-        for(i in x.indices){
+        for(i in y.indices){
             entryList.add(
-                Entry(x[i], y[i])
+                Entry(i.toFloat() + 1, y[i])
             )
         }
 
