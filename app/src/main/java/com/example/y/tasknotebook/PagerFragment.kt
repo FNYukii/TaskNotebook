@@ -39,7 +39,7 @@ class PagerFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //HistoryFragmentからページ番号を受け取って、当月との差を計算
+        //GraphFragmentからページ番号を受け取って、当月との差を計算
         val position = arguments?.getInt("position") ?: 0
         val offsetMonth: Int = 0 - (pageSize / 2 - position)
 

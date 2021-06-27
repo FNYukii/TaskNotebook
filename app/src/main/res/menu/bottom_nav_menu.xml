@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_third"
-        android:icon="@drawable/ic_baseline_apps_24"
+        android:icon="@drawable/ic_baseline_show_chart_24"
         android:title="@string/title_graph" />
 
 </menu>
