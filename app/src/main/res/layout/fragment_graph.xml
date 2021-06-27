@@ -7,7 +7,7 @@
     tools:context=".GraphFragment">
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/calendarPager"
+        android:id="@+id/graphPager"
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
