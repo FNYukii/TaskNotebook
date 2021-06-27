@@ -32,6 +32,7 @@ class TimePickerDialogFragment: DialogFragment(), TimePickerDialog.OnTimeSetList
             context != null -> {
                 TimePickerDialog(
                     context,
+//                    R.style.CustomTimePickerDialog,
                     this,
                     calendar.get(Calendar.HOUR_OF_DAY),
                     calendar.get(Calendar.MINUTE),

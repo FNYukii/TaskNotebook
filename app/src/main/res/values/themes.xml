@@ -46,6 +46,34 @@
     </style>
 
 
+    <style name="CustomDatePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+
+        <item name="android:windowBackground">@color/appBackground</item>
+        <item name="colorAccent">@color/appBackground</item>
+        <item name="selectableItemBackgroundBorderless">@color/appBackground</item>
+
+        <item name="android:textColorSecondaryInverse">@color/weak</item>
+        <item name="android:textColorPrimaryInverse">@color/weak</item>
+
+        <item name="android:textColorSecondary">@color/weak</item>
+        <item name="android:textColorPrimary">@color/weak</item>
+<!--        <item name="colorPrimary">@color/imageColor</item>-->
+<!--        <item name="android:colorPrimary">@color/imageColor</item>-->
+
+        <item name="colorControlActivated">@color/imageColor</item>
+
+    </style>
+
+
+
+    <style name="CustomTimePickerDialog" parent="Theme.AppCompat.Light.Dialog">
+
+
+
+    </style>
+
+
+
 
 
 

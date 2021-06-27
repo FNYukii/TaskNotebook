@@ -32,6 +32,7 @@ class DatePickerDialogFragment: DialogFragment(), DatePickerDialog.OnDateSetList
             context != null -> {
                 DatePickerDialog(
                     context,
+                    R.style.CustomDatePickerDialog,
                     this,
                     calendar.get(Calendar.YEAR),
                     calendar.get(Calendar.MONTH),
