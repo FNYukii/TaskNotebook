@@ -2,7 +2,6 @@ package com.example.y.tasknotebook
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,20 +69,20 @@ class TileRecyclerViewAdapter(
 
             //当日開始日時 例: Tue Jun 29 00:00:00 GMT+09:00 2021
             val formatter = SimpleDateFormat("yyyy-MM-dd")
-            val startDatetime: Date = formatter.parse(days[position].toString())!!
+            val startDate: Date = formatter.parse(days[position].toString())!!
 
             //当日終了日時 例: Tue Jun 29 23:59:59 GMT+09:00 2021
-            val endDatetime:Date = formatter.parse(days[position].toString())!!
-            endDatetime.hours = 23
-            endDatetime.minutes = 59
-            endDatetime.seconds = 59
+            val endDate:Date = formatter.parse(days[position].toString())!!
+            endDate.hours = 23
+            endDate.minutes = 59
+            endDate.seconds = 59
 
             //この後レコード検索を行うので、Realmのインスタンスを取得
             val realm = Realm.getDefaultInstance()
 
             //当日のタスクの達成数を取得
             val realmResults = realm.where<Task>()
-                .between("achievedDate", startDatetime, endDatetime)
+                .between("achievedDate", startDate, endDate)
                 .findAll()
 
             //当日のタスク達成数に応じて、tileの背景色を変更

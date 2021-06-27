@@ -1,6 +1,6 @@
 package com.example.y.tasknotebook
 
-import android.graphics.Color
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +12,8 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
+import io.realm.Realm
+import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_pager.*
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -104,21 +106,41 @@ class PagerFragment: Fragment() {
     }
 
 
+    @SuppressLint("SimpleDateFormat")
     private fun setLineChart(){
-        //Y軸データ 日付ごとの達成数を格納する
-        val y = listOf<Float>(
-            2f, 2f, 3f, 4f, 2f, 4f, 1f,
-            1f, 4f, 3f, 0f, 0f, 1f, 2f,
-            3f, 2f, 3f, 4f, 3f, 3f, 4f,
-            2f, 0f, 4f, 5f, 0f, 2f, 3f,
-            1f, 6f, 3f
-        )
+
+        //日別達成数データを格納するリストを宣言
+        val achievedData = mutableListOf<Int>()
+
+        //achievedDataにデータを追加
+        for (i in days.indices){
+            if(days[i] != null){
+
+                //当日の開始日時と終了日時を生成
+                val localDate:LocalDate = days[i]!!
+                val formatter = SimpleDateFormat("yyyy-MM-dd")
+                val startDate: Date = formatter.parse(localDate.toString())!!
+                val endDate: Date = formatter.parse(localDate.toString())!!
+                endDate.hours = 23
+                endDate.minutes = 59
+                endDate.seconds = 59
+
+                //当日達成したタスクを全取得
+                val realm = Realm.getDefaultInstance()
+                val realmResults = realm.where<Task>()
+                    .between("achievedDate", startDate, endDate)
+                    .findAll()
+
+                //当日のタスク達成数をachievedDataへ追加
+                achievedData.add(realmResults.size)
+            }
+        }
 
         //1. Entryにデータを格納
         val entryList = mutableListOf<Entry>() //1本目の線
-        for(i in y.indices){
+        for(i in achievedData.indices){
             entryList.add(
-                Entry(i.toFloat() + 1, y[i])
+                Entry(i.toFloat() + 1, achievedData[i].toFloat())
             )
         }
 
@@ -147,6 +169,20 @@ class PagerFragment: Fragment() {
         lineChart.xAxis.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.axisLeft.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.axisRight.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
+        lineChart.axisLeft.axisMinimum = 0f
+        lineChart.axisRight.axisMinimum = 0f
+        lineChart.axisLeft.granularity = 1f
+        lineChart.axisRight.granularity = 1f
+
+        val maxValue = achievedData.maxOrNull() ?: 0
+        if(maxValue > 5){
+            lineChart.axisLeft.axisMaximum = maxValue.toFloat()
+            lineChart.axisRight.axisMaximum = maxValue.toFloat()
+        }else{
+            lineChart.axisLeft.axisMaximum = 5f
+            lineChart.axisRight.axisMaximum = 5f
+        }
+
 
         //7. LineChart更新
         lineChart.invalidate()
