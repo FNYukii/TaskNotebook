@@ -89,7 +89,7 @@ class TaskFragment : Fragment() {
 
         //searchRecyclerView01の処理
         searchRecyclerView01.layoutManager = GridLayoutManager(this.context, 2)
-        searchRecyclerView01.adapter = FrameRecyclerViewAdapter(searchedResults, false)
+        searchRecyclerView01.adapter = FrameRecyclerViewAdapter(searchedResults)
 
         //検索結果が0件なら、画面にメッセージを表示
         if(searchedResults.size == 0){
@@ -118,7 +118,7 @@ class TaskFragment : Fragment() {
 
         //pinRecyclerViewの処理
         pinRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
-        pinRecyclerView.adapter = FrameRecyclerViewAdapter(pinnedResults, false)
+        pinRecyclerView.adapter = FrameRecyclerViewAdapter(pinnedResults)
 
         //もしピン止めされたレコードが無いなら、pinRecyclerViewを表示しない
         if(pinnedResults.size == 0){
@@ -129,7 +129,7 @@ class TaskFragment : Fragment() {
 
         //mainRecyclerViewの処理
         mainRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
-        mainRecyclerView.adapter = FrameRecyclerViewAdapter(notPinnedResults, false)
+        mainRecyclerView.adapter = FrameRecyclerViewAdapter(notPinnedResults)
 
         //未達成のタスクが0件なら、画面にメッセージを表示
         if(pinnedResults.size == 0 && notPinnedResults.size == 0){

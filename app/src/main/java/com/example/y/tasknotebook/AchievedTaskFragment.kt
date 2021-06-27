@@ -77,7 +77,7 @@ class AchievedTaskFragment : Fragment() {
 
         //searchRecyclerView02の処理
         searchRecyclerView02.layoutManager = GridLayoutManager(this.context, 2)
-        searchRecyclerView02.adapter = FrameRecyclerViewAdapter(searchedResults, false)
+        searchRecyclerView02.adapter = FrameRecyclerViewAdapter(searchedResults)
 
         //検索結果が0件なら、画面にメッセージを表示
         if(searchedResults.size == 0){
@@ -104,7 +104,7 @@ class AchievedTaskFragment : Fragment() {
 
         //achievedRecyclerViewの処理
         achievedRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
-        achievedRecyclerView.adapter = FrameRecyclerViewAdapter(achievedResults, false)
+        achievedRecyclerView.adapter = FrameRecyclerViewAdapter(achievedResults)
 
         //達成済みのタスクが0件なら、画面にメッセージを表示
         if(achievedResults.size == 0){
