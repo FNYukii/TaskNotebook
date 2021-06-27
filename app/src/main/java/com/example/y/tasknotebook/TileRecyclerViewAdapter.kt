@@ -61,7 +61,7 @@ class TileRecyclerViewAdapter(
 
         //もし当日がnullなら、tileを非表示
         if(days[position] == null){
-            holder.itemView.tileLayout.visibility = View.INVISIBLE
+            holder.tileLayout.visibility = View.INVISIBLE
         }
 
         //当日がnullでない時だけ、tileの色の処理を行う
@@ -87,12 +87,12 @@ class TileRecyclerViewAdapter(
 
             //当日のタスク達成数に応じて、tileの背景色を変更
             when(realmResults.size){
-                0 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_00)
-                1 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
-                2 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
-                3 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
-                4 -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
-                else -> holder.itemView.tileLayout.setBackgroundResource(R.drawable.background_tile_05)
+                0 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_00)
+                1 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
+                2 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
+                3 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
+                4 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
+                else -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_05)
             }
 
             //当日のタスク達成数が1件以上なら、dayTextを非表示

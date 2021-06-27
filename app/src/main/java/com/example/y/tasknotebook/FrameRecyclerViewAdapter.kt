@@ -1,6 +1,5 @@
 package com.example.y.tasknotebook
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +9,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import io.realm.*
 import kotlinx.android.synthetic.main.one_frame.view.*
-import java.text.SimpleDateFormat
 
 
 class FrameRecyclerViewAdapter(

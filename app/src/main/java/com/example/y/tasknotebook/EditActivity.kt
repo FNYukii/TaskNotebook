@@ -1,7 +1,6 @@
 package com.example.y.tasknotebook
 
 import android.annotation.SuppressLint
-import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -11,7 +10,6 @@ import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
-import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 

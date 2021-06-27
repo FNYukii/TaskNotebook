@@ -1,6 +1,5 @@
 package com.example.y.tasknotebook
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.WindowManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
