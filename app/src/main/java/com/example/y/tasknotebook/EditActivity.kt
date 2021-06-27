@@ -46,9 +46,13 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             achievedDatetime = task.achievedDate
             setPinIcon()
 
-            //もし、達成済みのタスクなら、pinButtonは非表示
+            //もし達成済みのタスクなら、pinButtonは非表示&達成日時を表示
             if(isAchieved){
                 pinButton.visibility = View.GONE
+                achievedDatetimeContainer.visibility = View.VISIBLE
+            }else{
+                pinButton.visibility = View.VISIBLE
+                achievedDatetimeContainer.visibility = View.GONE
             }
         }
 

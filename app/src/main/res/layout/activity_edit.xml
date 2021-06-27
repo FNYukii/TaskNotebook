@@ -63,6 +63,44 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <LinearLayout
+        android:id="@+id/achievedDatetimeContainer"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="32dp"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/achieveImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_check_24" />
+
+        <TextView
+            android:id="@+id/achievedDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="2021-06-25"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/weak" />
+
+        <TextView
+            android:id="@+id/achievedTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="14:32"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/weak" />
+
+    </LinearLayout>
+
+
     <EditText
         android:id="@+id/titleEdit"
         android:layout_width="match_parent"
@@ -74,7 +112,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:background="@null"
         android:hint="タイトル"
-        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintTop_toBottomOf="@id/achievedDatetimeContainer"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
