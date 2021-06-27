@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TaskNote</string>
+    <string name="app_name">タスクノート</string>
 
     <string name="title_task">タスク</string>
     <string name="title_achievedTask">達成済み</string>
