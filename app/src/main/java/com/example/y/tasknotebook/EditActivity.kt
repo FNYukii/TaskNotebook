@@ -1,6 +1,7 @@
 package com.example.y.tasknotebook
 
 import android.annotation.SuppressLint
+import android.app.DatePickerDialog
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -9,10 +10,17 @@ import io.realm.Realm
 import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
+import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
 
-class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, AchieveDialogFragment.DialogListener {
+class EditActivity :
+    AppCompatActivity(),
+    DeleteDialogFragment.DialogListener,
+    AchieveDialogFragment.DialogListener,
+    DatePickerDialogFragment.OnSelectedDateListener,
+    TimePickerDialogFragment.OnSelectedTimeListener
+{
 
     //Realmのインスタンス取得
     private var realm: Realm = Realm.getDefaultInstance()
@@ -21,7 +29,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
     private var id = 0
     private var isAchieved = false
     private var isPinned = false
-    private var achievedDatetime: Date? = null
+    private var achievedDate: Date? = null
     private var isGarbage = false
 
 
@@ -46,7 +54,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             isPinned = task.isPinned
             titleEdit.setText(task.title)
             detailEdit.setText(task.detail)
-            achievedDatetime = task.achievedDate
+            achievedDate = task.achievedDate
             setPinIcon()
 
             //もし達成済みのタスクなら…
@@ -94,6 +102,17 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             dialogFragment.show(supportFragmentManager, "dialog")
         }
 
+        //達成日が押されたら、ダイアログを呼ぶ
+        achievedDateText.setOnClickListener {
+            val datePickerDialogFragment = DatePickerDialogFragment()
+            datePickerDialogFragment.show(supportFragmentManager, null)
+        }
+
+        //達成時刻が押されたら、ダイアログを呼ぶ
+        achievedTimeText.setOnClickListener {
+            val timePickerDialogFragment = TimePickerDialogFragment()
+            timePickerDialogFragment.show(supportFragmentManager, null)
+        }
     }
 
 
@@ -146,7 +165,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task.isPinned = isPinned
             task.title = titleEdit.text.toString()
             task.detail = detailEdit.text.toString()
-            task.achievedDate = achievedDatetime
+            task.achievedDate = achievedDate
         }
     }
 
@@ -163,7 +182,7 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             task?.isPinned = isPinned
             task?.title = titleEdit.text.toString()
             task?.detail = detailEdit.text.toString()
-            task?.achievedDate = achievedDatetime
+            task?.achievedDate = achievedDate
         }
     }
 
@@ -180,11 +199,13 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
         }
     }
 
+
     override fun onDialogDeleteReceive(dialog: DialogFragment) {
         isGarbage = true
         saveRecord()
         finish()
     }
+
 
     override fun onDialogAchieveReceive(dialog: DialogFragment) {
         if(!isAchieved){
@@ -192,14 +213,22 @@ class EditActivity : AppCompatActivity(), DeleteDialogFragment.DialogListener, A
             isAchieved = true
             isPinned = false
             //現在日時を各フィールドに保存
-            achievedDatetime = Date()
+            achievedDate = Date()
         }else{
             //未達成にする
             isAchieved = false
-            achievedDatetime = null
+            achievedDate = null
         }
         saveRecord()
         finish()
+    }
+
+    override fun selectedDate(year: Int, month: Int, date: Int) {
+
+    }
+
+    override fun selectedTime(hour: Int, minute: Int) {
+
     }
 
 
