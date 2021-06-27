@@ -52,7 +52,6 @@ class PagerFragment: Fragment() {
         //lineChartを表示
         setLineChart()
 
-
     }
 
 
@@ -138,16 +137,12 @@ class PagerFragment: Fragment() {
         //2. DataSetにデータを格納
         val lineDataSet = LineDataSet(entryList, "square")
 
-        //3. DataSetにフォーマット指定
-        //線の色を赤くする
+        //3. この折れ線グラフのスタイル設定
         lineDataSet.color = ContextCompat.getColor(this.requireContext(), R.color.imageColor)
-        //データ点を非表示
         lineDataSet.setDrawCircles(false)
-        //データ値を非表示
         lineDataSet.setDrawValues(false)
 
-
-        //リストに格納
+        //lineDataSetをリストに格納
         lineDataSets.add(lineDataSet)
 
         //4. LineDataにLineDataSetを格納
@@ -155,14 +150,10 @@ class PagerFragment: Fragment() {
         //5. LineChartにLineDataを格納
         lineChart.data = lineData
 
-        //6. lineChartのフォーマット指定
-        //凡例を非表示
+        //6. lineChartのスタイル設定
         lineChart.legend.isEnabled = false
-        //説明ラベルを非表示
         lineChart.description.isEnabled = false
-        //タッチ操作を無効にする
         lineChart.setTouchEnabled(false)
-
         lineChart.xAxis.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.axisLeft.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
         lineChart.axisRight.textColor = ContextCompat.getColor(this.requireContext(), R.color.weak)
