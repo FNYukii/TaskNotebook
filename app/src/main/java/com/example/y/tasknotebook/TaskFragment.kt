@@ -8,6 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SearchView
+import android.widget.Toast
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
@@ -15,7 +19,7 @@ import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_task.*
 
 
-class TaskFragment : Fragment() {
+class TaskFragment : Fragment(), SortDialogFragment.DialogListener {
 
     //Realmのインスタンスを取得
     var realm: Realm = Realm.getDefaultInstance()
@@ -74,7 +78,8 @@ class TaskFragment : Fragment() {
 
         //sortButtonが押されたら、SortDialogを表示
         sortButton01.setOnClickListener {
-
+            val dialogFragment = SortDialogFragment()
+            dialogFragment.show(childFragmentManager, "dialog")
         }
 
     }
@@ -143,6 +148,10 @@ class TaskFragment : Fragment() {
             noTaskText01.visibility = View.INVISIBLE
         }
 
+    }
+
+    override fun onDialogSortIdReceive(dialog: DialogFragment, sortId: Int) {
+        Toast.makeText(this.context, "sortId: $sortId", Toast.LENGTH_SHORT).show()
     }
 
 
