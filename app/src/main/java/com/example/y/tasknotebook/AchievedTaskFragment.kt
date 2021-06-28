@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
@@ -13,7 +14,6 @@ import io.realm.RealmResults
 import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_achieved_task.*
-import kotlinx.android.synthetic.main.fragment_task.*
 
 
 class AchievedTaskFragment : Fragment() {
@@ -21,6 +21,9 @@ class AchievedTaskFragment : Fragment() {
 
     //Realmのインスタンスを取得
     var realm: Realm = Realm.getDefaultInstance()
+
+    //RecyclerViewの列数を格納する変数
+    private var spanCount: Int = 2
 
     //isPinnedがtrueのレコードを全取得
     private val achievedResults: RealmResults<Task> = realm.where<Task>()
@@ -49,7 +52,7 @@ class AchievedTaskFragment : Fragment() {
                 return false
             }
             override fun onQueryTextSubmit(query: String?): Boolean {
-                searchView01.clearFocus()
+                searchView02.clearFocus()
                 return false
             }
         })
@@ -58,6 +61,17 @@ class AchievedTaskFragment : Fragment() {
         screenCover02.setOnTouchListener { _, _ ->
             searchView02.clearFocus()
             false
+        }
+
+        //画面の幅に応じた列数でRecyclerViewを表示
+        parentLayout02.afterMeasured {
+            spanCount = when(parentLayout02.width){
+                in 0..599 -> 1
+                in 600..1199 -> 2
+                in 1200..1799 -> 3
+                else -> 4
+            }
+            setRecyclerViewLayoutManager()
         }
 
     }
@@ -76,8 +90,10 @@ class AchievedTaskFragment : Fragment() {
             .findAll()
 
         //searchRecyclerView02の処理
-        searchRecyclerView02.layoutManager = GridLayoutManager(this.context, 2)
         searchRecyclerView02.adapter = FrameRecyclerViewAdapter(searchedResults)
+
+        //searchRecyclerView02のレイアウトを設定
+        setRecyclerViewLayoutManager()
 
         //検索結果が0件なら、画面にメッセージを表示
         if(searchedResults.size == 0){
@@ -101,10 +117,11 @@ class AchievedTaskFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-
-        //achievedRecyclerViewの処理
-        achievedRecyclerView.layoutManager = GridLayoutManager(this.context, 2)
+        //achievedRecyclerViewのadapterをセット
         achievedRecyclerView.adapter = FrameRecyclerViewAdapter(achievedResults)
+
+        //achievedRecyclerViewのレイアウトを設定
+        setRecyclerViewLayoutManager()
 
         //達成済みのタスクが0件なら、画面にメッセージを表示
         if(achievedResults.size == 0){
@@ -112,7 +129,26 @@ class AchievedTaskFragment : Fragment() {
         }else {
             noTaskText02.visibility = View.GONE
         }
+    }
 
+
+    //画面のレイアウトが更新されるたびに、RecyclerViewの列数を更新
+    private fun setRecyclerViewLayoutManager(){
+        achievedRecyclerView.layoutManager = GridLayoutManager(this.context, spanCount)
+        searchRecyclerView02.layoutManager = GridLayoutManager(this.context, spanCount)
+    }
+
+
+    //Viewのレイアウト完了時に処理を行うための拡張関数
+    private inline fun <T : View> T.afterMeasured(crossinline f: T.() -> Unit) {
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (measuredWidth > 0 && measuredHeight > 0) {
+                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    f()
+                }
+            }
+        })
     }
 
 

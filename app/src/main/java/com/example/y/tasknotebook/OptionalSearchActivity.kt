@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewTreeObserver
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.Sort
@@ -16,6 +17,9 @@ import java.util.*
 
 class OptionalSearchActivity : AppCompatActivity() {
 
+
+    //RecyclerViewの列数を格納する変数
+    private var spanCount: Int = 2
 
     //日付用の変数
     private var year = 0
@@ -39,6 +43,17 @@ class OptionalSearchActivity : AppCompatActivity() {
         //backButton03を押すと、finish
         backButton03.setOnClickListener {
             finish()
+        }
+
+        //画面の幅に応じた列数でRecyclerViewを表示
+        parentLayout03.afterMeasured {
+            spanCount = when(parentLayout03.width){
+                in 0..599 -> 1
+                in 600..1199 -> 2
+                in 1200..1799 -> 3
+                else -> 4
+            }
+            setRecyclerViewLayoutManager()
         }
 
     }
@@ -66,8 +81,10 @@ class OptionalSearchActivity : AppCompatActivity() {
             .sort("achievedDate", Sort.DESCENDING)
 
         //optionalSearchRecyclerViewの処理
-        optionalSearchRecyclerView.layoutManager = GridLayoutManager(this, 2)
         optionalSearchRecyclerView.adapter = FrameRecyclerViewAdapter(realmResults)
+
+        //optionalSearchRecyclerViewのレイアウトを設定
+        setRecyclerViewLayoutManager()
 
         //realmResultsが0件なら、画面にメッセージを表示
         if(realmResults.size == 0){
@@ -76,6 +93,24 @@ class OptionalSearchActivity : AppCompatActivity() {
             messageText03.visibility = View.INVISIBLE
         }
 
+    }
+
+
+    private fun setRecyclerViewLayoutManager(){
+        optionalSearchRecyclerView.layoutManager = GridLayoutManager(this, spanCount)
+    }
+
+
+    //Viewのレイアウト完了時に処理を行うための拡張関数
+    private inline fun <T : View> T.afterMeasured(crossinline f: T.() -> Unit) {
+        viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+            override fun onGlobalLayout() {
+                if (measuredWidth > 0 && measuredHeight > 0) {
+                    viewTreeObserver.removeOnGlobalLayoutListener(this)
+                    f()
+                }
+            }
+        })
     }
 
 
