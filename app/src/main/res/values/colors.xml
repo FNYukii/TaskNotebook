@@ -26,16 +26,16 @@
     <!-- part colors -->
     <color name="appBackground">#FFFFFF</color>
     <color name="bottomNavigationBackground">#FFFFFF</color>
-    <color name="frameLine">#CCCCCC</color>
-    <color name="tileLine">#CCCCCC</color>
+    <color name="frameBorder">#CCCCCC</color>
+    <color name="tileBorder">#AAAAAA</color>
     <color name="searchViewBackground">#DDDDDD</color>
 
     <!-- calendar tile colors -->
-    <color name="red01">#77FF6464</color>
-    <color name="red02">#99FF6464</color>
-    <color name="red03">#BBFF6464</color>
-    <color name="red04">#DDFF6464</color>
-    <color name="red05">#FFFF6464</color>
+    <color name="red01">#77FF3737</color>
+    <color name="red02">#99FF3737</color>
+    <color name="red03">#BBFF3737</color>
+    <color name="red04">#DDFF3737</color>
+    <color name="red05">#FF3737</color>
 
 
 

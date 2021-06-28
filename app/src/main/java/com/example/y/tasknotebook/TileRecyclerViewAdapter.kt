@@ -88,8 +88,7 @@ class TileRecyclerViewAdapter(
             //当日のタスク達成数に応じて、タイルの色を変更
             when(realmResults.size){
                 0 -> {
-                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_00)
-                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.gray))
+                    //do nothing
                 }
                 1 -> {
                     holder.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
