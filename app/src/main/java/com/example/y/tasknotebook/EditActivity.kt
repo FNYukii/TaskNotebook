@@ -33,7 +33,6 @@ class EditActivity :
     private var isGarbage = false
 
 
-    @SuppressLint("SimpleDateFormat")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit)
@@ -57,36 +56,10 @@ class EditActivity :
             achievedDate = task.achievedDate
             setPinIcon()
 
-            //もしタスクが達成済みなら、達成日時を表示&pinButtonを非表示
+            //もしタスクが達成済みなら、達成日時をセット&pinButtonを非表示
             if(isAchieved){
-
-                //pinButtonは非表示&達成日時を表示
+                setAchievedDateTimeText()
                 pinButton.visibility = View.GONE
-
-                //達成年日の文字列を生成
-                val dateFormatter = SimpleDateFormat("yyyy年 M月 d日")
-                val achievedDateString: String = dateFormatter.format(achievedDate!!)
-
-                //達成曜日の文字列を生成
-                val achievedLocalDate = achievedDate!!.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-                val achievedDayOfWeek: Int =  achievedLocalDate.dayOfWeek.value
-                var achievedDayOfWeekString: String = ""
-                when(achievedDayOfWeek){
-                    1 -> achievedDayOfWeekString = " (日)"
-                    2 -> achievedDayOfWeekString = " (月)"
-                    3 -> achievedDayOfWeekString = " (火)"
-                    4 -> achievedDayOfWeekString = " (水)"
-                    5 -> achievedDayOfWeekString = " (木)"
-                    6 -> achievedDayOfWeekString = " (金)"
-                    7 -> achievedDayOfWeekString = " (土)"
-                }
-
-                //達成日をTextViewへセット
-                achievedDateText.text = (achievedDateString + achievedDayOfWeekString)
-
-                //達成時刻をTextViewへセット
-                val timeFormatter = SimpleDateFormat("HH:mm")
-                achievedTimeText.text = timeFormatter.format(achievedDate!!)
             }
 
         }
@@ -150,6 +123,37 @@ class EditActivity :
         }else{
             pinButton.setImageResource(R.drawable.ic_outline_push_pin_24)
         }
+    }
+
+
+    @SuppressLint("SimpleDateFormat")
+    private fun setAchievedDateTimeText(){
+
+        //達成年日の文字列を生成
+        val dateFormatter = SimpleDateFormat("yyyy年 M月 d日")
+        val achievedDateString: String = dateFormatter.format(achievedDate!!)
+
+        //達成曜日の文字列を生成
+        val achievedLocalDate = achievedDate!!.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+        val achievedDayOfWeek: Int =  achievedLocalDate.dayOfWeek.value
+        var achievedDayOfWeekString: String = ""
+        when(achievedDayOfWeek){
+            1 -> achievedDayOfWeekString = " (日)"
+            2 -> achievedDayOfWeekString = " (月)"
+            3 -> achievedDayOfWeekString = " (火)"
+            4 -> achievedDayOfWeekString = " (水)"
+            5 -> achievedDayOfWeekString = " (木)"
+            6 -> achievedDayOfWeekString = " (金)"
+            7 -> achievedDayOfWeekString = " (土)"
+        }
+
+        //達成日をTextViewへセット
+        achievedDateText.text = (achievedDateString + achievedDayOfWeekString)
+
+        //達成時刻をTextViewへセット
+        val timeFormatter = SimpleDateFormat("HH:mm")
+        achievedTimeText.text = timeFormatter.format(achievedDate!!)
+
     }
 
 
@@ -255,26 +259,9 @@ class EditActivity :
         achievedDate?.month = month
         achievedDate?.date = date
 
-        //達成年日の文字列を生成
-        val dateFormatter = SimpleDateFormat("yyyy年 M月 d日")
-        val achievedDateString: String = dateFormatter.format(achievedDate!!)
-
-        //達成曜日の文字列を生成
-        val achievedLocalDate = achievedDate!!.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
-        val achievedDayOfWeek: Int =  achievedLocalDate.dayOfWeek.value
-        var achievedDayOfWeekString: String = ""
-        when(achievedDayOfWeek){
-            1 -> achievedDayOfWeekString = " (日)"
-            2 -> achievedDayOfWeekString = " (月)"
-            3 -> achievedDayOfWeekString = " (火)"
-            4 -> achievedDayOfWeekString = " (水)"
-            5 -> achievedDayOfWeekString = " (木)"
-            6 -> achievedDayOfWeekString = " (金)"
-            7 -> achievedDayOfWeekString = " (土)"
-        }
-
         //達成日をTextViewへセット
-        achievedDateText.text = (achievedDateString + achievedDayOfWeekString)
+        setAchievedDateTimeText()
+
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -285,8 +272,7 @@ class EditActivity :
         achievedDate?.minutes = minute
 
         //達成時刻をTextViewへセット
-        val timeFormatter = SimpleDateFormat("HH:mm")
-        achievedTimeText.text = timeFormatter.format(achievedDate!!)
+        setAchievedDateTimeText()
     }
 
 
