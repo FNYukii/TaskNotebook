@@ -32,7 +32,7 @@ class AchieveDialogFragment: DialogFragment() {
             }
 
             //Dialogのパーツを生成
-            val builder = AlertDialog.Builder(it, R.style.CustomDialog)
+            val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
             builder.setTitle("確認")
                 .setMessage(message)
                 .setPositiveButton("OK"

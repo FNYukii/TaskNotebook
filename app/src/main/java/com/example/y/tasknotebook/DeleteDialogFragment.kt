@@ -20,7 +20,7 @@ class DeleteDialogFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
-            val builder = AlertDialog.Builder(it, R.style.CustomDialog)
+            val builder = AlertDialog.Builder(it, R.style.CustomAlertDialog)
             builder.setTitle("確認")
                 .setMessage("このタスクを削除しますか?")
                 .setPositiveButton("OK"
