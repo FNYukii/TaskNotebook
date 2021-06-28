@@ -11,6 +11,8 @@ import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
 import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.*
 
 class EditActivity :
@@ -56,20 +58,39 @@ class EditActivity :
             achievedDate = task.achievedDate
             setPinIcon()
 
-            //もし達成済みのタスクなら…
+            //もし達成済みのタスクなら達成日時を表示する
             if(isAchieved){
 
                 //pinButtonは非表示&達成日時を表示
                 pinButton.visibility = View.GONE
-                achievedDatetimeContainer.visibility = View.VISIBLE
+
+                //達成年日の文字列を生成
+                val dateFormatter = SimpleDateFormat("yyyy年 M月 d日")
+                val achievedDateString: String = dateFormatter.format(achievedDate!!)
+
+                //達成曜日の文字列を生成
+                val achievedLocalDate = achievedDate!!.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+                val achievedDayOfWeek: Int =  achievedLocalDate.dayOfWeek.value
+                var achievedDayOfWeekString: String = ""
+                when(achievedDayOfWeek){
+                    1 -> achievedDayOfWeekString = " (日)"
+                    2 -> achievedDayOfWeekString = " (月)"
+                    3 -> achievedDayOfWeekString = " (火)"
+                    4 -> achievedDayOfWeekString = " (水)"
+                    5 -> achievedDayOfWeekString = " (木)"
+                    6 -> achievedDayOfWeekString = " (金)"
+                    7 -> achievedDayOfWeekString = " (土)"
+                }
 
                 //達成日をTextViewへセット
-                val dateFormatter = SimpleDateFormat("yyyy-MM-dd")
-                achievedDateText.text = dateFormatter.format(achievedDate!!)
+                achievedDateText.text = (achievedDateString + achievedDayOfWeekString)
 
                 //達成時刻をTextViewへセット
                 val timeFormatter = SimpleDateFormat("HH:mm")
                 achievedTimeText.text = timeFormatter.format(achievedDate!!)
+
+            }else{
+                achievedDatetimeContainer.visibility = View.GONE
             }
         }
 

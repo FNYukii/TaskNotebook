@@ -68,7 +68,6 @@
         app:layout_constraintTop_toBottomOf="@id/toolbar"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="32dp"
@@ -86,7 +85,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:text="2021-06-25"
+            android:text="2021年 6月 25日 (金)"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textColor="@color/weak" />
 
