@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="YYYY年 M月"
-        android:textSize="30dp"
+        android:textSize="30sp"
         android:layout_marginTop="8dp"
         android:textColor="@color/weak"
         app:layout_constraintEnd_toEndOf="parent"
