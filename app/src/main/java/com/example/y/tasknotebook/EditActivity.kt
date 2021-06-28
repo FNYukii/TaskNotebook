@@ -11,7 +11,6 @@ import io.realm.kotlin.createObject
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.activity_edit.*
 import java.text.SimpleDateFormat
-import java.time.LocalDate
 import java.time.ZoneId
 import java.util.*
 
@@ -58,7 +57,7 @@ class EditActivity :
             achievedDate = task.achievedDate
             setPinIcon()
 
-            //もし達成済みのタスクなら達成日時を表示する
+            //もしタスクが達成済みなら、達成日時を表示&pinButtonを非表示
             if(isAchieved){
 
                 //pinButtonは非表示&達成日時を表示
@@ -89,9 +88,13 @@ class EditActivity :
                 val timeFormatter = SimpleDateFormat("HH:mm")
                 achievedTimeText.text = timeFormatter.format(achievedDate!!)
 
-            }else{
+            }
+
+            //もしタスクが未達成なら、達成日時を非表示
+            if(!isAchieved){
                 achievedDatetimeContainer.visibility = View.GONE
             }
+
         }
 
 
