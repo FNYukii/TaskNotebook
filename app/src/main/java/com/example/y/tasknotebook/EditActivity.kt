@@ -87,16 +87,14 @@ class EditActivity :
                 //達成時刻をTextViewへセット
                 val timeFormatter = SimpleDateFormat("HH:mm")
                 achievedTimeText.text = timeFormatter.format(achievedDate!!)
-
-            }
-
-            //もしタスクが未達成なら、達成日時を非表示
-            if(!isAchieved){
-                achievedDatetimeContainer.visibility = View.GONE
             }
 
         }
 
+        //もしタスクが未達成なら、達成日時を非表示
+        if(!isAchieved){
+            achievedDatetimeContainer.visibility = View.GONE
+        }
 
         //backButtonを押すとfinish
         backButton.setOnClickListener {
