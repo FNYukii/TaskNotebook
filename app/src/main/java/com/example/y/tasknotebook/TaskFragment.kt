@@ -72,6 +72,11 @@ class TaskFragment : Fragment() {
             false
         }
 
+        //sortButtonが押されたら、SortDialogを表示
+        sortButton01.setOnClickListener {
+
+        }
+
     }
 
     private fun search(query: String) {
