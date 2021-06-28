@@ -12,6 +12,7 @@ import android.widget.SearchView
 import androidx.recyclerview.widget.GridLayoutManager
 import io.realm.Realm
 import io.realm.RealmResults
+import io.realm.Sort
 import io.realm.kotlin.where
 import kotlinx.android.synthetic.main.fragment_task.*
 
@@ -31,6 +32,7 @@ class TaskFragment : Fragment() {
         .and()
         .equalTo("isPinned", true)
         .findAll()
+        .sort("id", Sort.DESCENDING)
 
     //isPinnedがfalseのレコードを全取得
     private val notPinnedResults: RealmResults<Task> = realm.where<Task>()
@@ -38,6 +40,7 @@ class TaskFragment : Fragment() {
         .and()
         .equalTo("isPinned", false)
         .findAll()
+        .sort("id", Sort.DESCENDING)
 
 
     override fun onCreateView(
