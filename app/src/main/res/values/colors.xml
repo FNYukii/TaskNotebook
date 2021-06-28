@@ -31,7 +31,6 @@
     <color name="searchViewBackground">#DDDDDD</color>
 
     <!-- calendar tile colors -->
-    <color name="red00">#55FF6464</color>
     <color name="red01">#77FF6464</color>
     <color name="red02">#99FF6464</color>
     <color name="red03">#BBFF6464</color>

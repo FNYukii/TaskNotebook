@@ -14,21 +14,12 @@
     <!-- focused -->
     <item android:state_pressed="true" android:state_focused="false" tools:ignore="StateListReachable">
         <shape android:shape="rectangle">
+            <solid android:color="@color/red01"/>
             <stroke
                 android:width="1dp"
-                android:color="@color/red04" />
-            <corners android:radius="5dp" />
-        </shape>
-    </item>
-
-    <!-- pressed -->
-    <item android:state_pressed="true" android:state_focused="false">
-        <shape android:shape="rectangle">
-            <solid android:color="@color/teal_200" />
+                android:color="@color/red05" />
             <corners android:radius="5dp" />
         </shape>
     </item>
 
 </selector>
-
-

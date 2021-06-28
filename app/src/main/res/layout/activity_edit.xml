@@ -127,7 +127,7 @@
         android:textColor="@color/weak"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:background="@null"
-        android:hint="説明"
+        android:hint="やること"
         app:layout_constraintTop_toBottomOf="@id/titleEdit"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
