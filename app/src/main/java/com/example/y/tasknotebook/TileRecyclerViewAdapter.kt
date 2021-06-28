@@ -85,19 +85,32 @@ class TileRecyclerViewAdapter(
                 .between("achievedDate", startDate, endDate)
                 .findAll()
 
-            //当日のタスク達成数に応じて、tileの背景色を変更
+            //当日のタスク達成数に応じて、タイルの色を変更
             when(realmResults.size){
-                0 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_00)
-                1 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
-                2 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
-                3 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
-                4 -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
-                else -> holder.tileLayout.setBackgroundResource(R.drawable.background_tile_05)
-            }
-
-            //当日のタスク達成数が1件以上なら、dayTextを非表示
-            if(realmResults.size != 0){
-                holder.itemView.dayText.visibility = View.INVISIBLE
+                0 -> {
+                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_00)
+                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.gray))
+                }
+                1 -> {
+                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_01)
+                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red01))
+                }
+                2 -> {
+                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_02)
+                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red02))
+                }
+                3 -> {
+                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_03)
+                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red03))
+                }
+                4 -> {
+                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_04)
+                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red04))
+                }
+                else -> {
+                    holder.tileLayout.setBackgroundResource(R.drawable.background_tile_05)
+                    holder.dayText.setTextColor(ContextCompat.getColor(holder.itemView.context, R.color.red05))
+                }
             }
 
             //タイルを押すと、OptionalSearchActivityへ遷移
