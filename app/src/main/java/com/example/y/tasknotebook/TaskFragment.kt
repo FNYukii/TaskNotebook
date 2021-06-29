@@ -105,6 +105,7 @@ class TaskFragment : Fragment() {
             .and()
             .equalTo("isAchieved", false)
             .findAll()
+            .sort("id", Sort.DESCENDING)
 
         //searchRecyclerView01のadapterをセット
         searchRecyclerView01.adapter = FrameRecyclerViewAdapter(searchedResults)

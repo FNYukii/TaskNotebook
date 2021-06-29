@@ -25,7 +25,7 @@ class AchievedTaskFragment : Fragment() {
     //RecyclerViewの列数を格納する変数
     private var spanCount: Int = 2
 
-    //isPinnedがtrueのレコードを全取得
+    //isAchievedがtrueのレコードを全取得
     private val achievedResults: RealmResults<Task> = realm.where<Task>()
         .equalTo("isAchieved", true)
         .findAll()
@@ -88,6 +88,7 @@ class AchievedTaskFragment : Fragment() {
             .and()
             .equalTo("isAchieved", true)
             .findAll()
+            .sort("achievedDate", Sort.DESCENDING)
 
         //searchRecyclerView02の処理
         searchRecyclerView02.adapter = FrameRecyclerViewAdapter(searchedResults)
