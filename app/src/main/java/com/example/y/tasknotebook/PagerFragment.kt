@@ -150,7 +150,7 @@ class PagerFragment: Fragment() {
         val lineDataSet = LineDataSet(entryList, "square")
 
         //3. この折れ線グラフのスタイル設定
-        lineDataSet.color = ContextCompat.getColor(this.requireContext(), R.color.imageColor)
+        lineDataSet.color = ContextCompat.getColor(this.requireContext(), R.color.red05)
         lineDataSet.setDrawCircles(false)
         lineDataSet.setDrawValues(false)
 
