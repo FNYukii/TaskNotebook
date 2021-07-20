@@ -2,7 +2,7 @@
     <string name="app_name">タスクノート</string>
 
     <string name="title_task">タスク</string>
-    <string name="title_achievedTask">達成済み</string>
-    <string name="title_graph">達成グラフ</string>
+    <string name="title_achievedTask">完了済み</string>
+    <string name="title_graph">実績グラフ</string>
 
 </resources>

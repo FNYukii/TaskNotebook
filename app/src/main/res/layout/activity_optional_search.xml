@@ -11,7 +11,7 @@
         android:id="@+id/messageText03"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="この日に達成したタスクはありません"
+        android:text="この日に完了したタスクはありません"
         android:textColor="@color/weak"
         android:textSize="18sp"
         app:layout_constraintTop_toTopOf="parent"
