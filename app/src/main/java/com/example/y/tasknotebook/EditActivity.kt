@@ -56,10 +56,11 @@ class EditActivity :
             achievedDate = task.achievedDate
             setPinIcon()
 
-            //もしタスクが達成済みなら、達成日時をセット&pinButtonを非表示
+            //もしタスクが達成済みなら、達成日時をセット&pinButtonを非表示&完了アイコンを変更
             if(isAchieved){
                 setAchievedDateTimeText()
                 pinButton.visibility = View.GONE
+                achieveButton.setImageResource(R.drawable.ic_baseline_close_24)
             }
 
         }
